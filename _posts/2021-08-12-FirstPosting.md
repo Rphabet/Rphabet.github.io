@@ -61,3 +61,9 @@ image:
   width: 1000   # in pixels
   height: 400   # in pixels
   alt: image alternative text
+
+
+
+
+
+![상대 경로로 이미지를 불러오면 먹힐까?](img/android-chrome-512x512.png)
