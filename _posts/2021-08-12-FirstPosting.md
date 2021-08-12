@@ -74,3 +74,14 @@ image:
 
 ![이미지 주소 상대경로 설정](img/aaa.png)
 
+
+
+
+
+![crossfitting 절대경로](/Users/bangirimben/Rphabet.github.io/assets/img/crossfit/crossfitting.png)
+
+
+
+
+
+![crossfitting](/Users/bangirimben/Rphabet.github.io/assets/img/crossfit/crossfitting.png)
