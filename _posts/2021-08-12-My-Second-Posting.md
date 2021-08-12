@@ -17,3 +17,17 @@ image:
 
 ![crossfit](/Users/bangirimben/Rphabet.github.io/assets/img/crossfit/crossfitting.png)
 
+
+
+
+
+![crossfitting2](/Users/bangirimben/Rphabet.github.io/assets/images/crossfitting2.png)
+
+![crossfitting2](/assets/images/crossfitting2.png)
+
+
+
+<img src="/Users/bangirimben/Rphabet.github.io/assets/images/crossfitting2.png" alt="">
+
+보자 어떤 친구가 이미지 불러오기에 성공할 것인가..
+
