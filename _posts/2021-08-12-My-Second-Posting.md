@@ -4,6 +4,7 @@ date: 2021-08-12 09:00:00 +0900
 categories: [Daily, Diary]
 tags: [writing] 
 math: true
+comments: true
 image:
   src: /Users/bangirimben/Rphabet.github.io/assets/img/crossfit/crossfitting.png
   width: 1000   # in pixels
