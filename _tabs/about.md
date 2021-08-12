@@ -15,16 +15,17 @@ order: 4
 
   **London School of Economics** *Msc Economics*
 
-  **University of Edinburgh** *MA Hons Econoomics*
+  **University of Edinburgh** *MA Hons Economics*
 
   **UC Berkeley** *Non-URGD; Summer School*
 
   **University of North Carolina at Chapel Hill** *Non-URGD; Exchange Programme & Summer School* 
 
-- Hobby:
+- Hobbies:
 
   Cross-fit -- Fierece Battle Crossfit, Seoul
 
   5km long running -- Han River
 
   Weight training 
+

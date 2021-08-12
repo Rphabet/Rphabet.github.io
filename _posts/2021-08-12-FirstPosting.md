@@ -1,6 +1,6 @@
 ---
-title: My Very First Posting
-date: 2021-08-11 21:52:00 +0900
+title: My Very First Posting (2nd attempt)
+date: 2021-08-12 09:00:00 +0900
 categories: [Daily, Diary]
 tags: [writing] 
 ---
