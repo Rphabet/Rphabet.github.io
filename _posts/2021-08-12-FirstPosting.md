@@ -67,3 +67,10 @@ image:
 
 
 ![상대 경로로 이미지를 불러오면 먹힐까?](img/android-chrome-512x512.png)
+
+
+
+![ㅇㅣ미지 주소 절대 경로로 설정](/Users/bangirimben/Rphabet.github.io/_posts/img/aaa.png)
+
+![이미지 주소 상대경로 설정](img/aaa.png)
+
