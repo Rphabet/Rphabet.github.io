@@ -3,6 +3,11 @@ title: My Very First Posting (2nd attempt)
 date: 2021-08-12 09:00:00 +0900
 categories: [Daily, Diary]
 tags: [writing] 
+image:
+  src: /Users/bangirimben/Rphabet.github.io/assets/img/favicons/android-chrome-512x512.png
+  width: 1000   # in pixels
+  height: 400   # in pixels
+  alt: image alternative text
 ---
 
 
@@ -30,4 +35,22 @@ def add(a, b):
 ---
 
 horizontal line
+
+---
+
+Latex
+
+basic linear regression equation (probabilistic model)
+
+둘중의 어떤 수식이 먹히려나... 둘다 안먹히면 ㅂㄷㅂㄷ
+
+\\[ y = \alpha + \beta X + \epsilon \\]
+
+$$ y = ax + \epsilon $$ 
+
+---
+
+image upload
+
+![My First Sample Image: 수박 들고 있는 개미](/Users/bangirimben/Rphabet.github.io/assets/img/favicons/android-chrome-512x512.png)
 
