@@ -193,5 +193,5 @@ The server generated these startup warnings when booting:
 
 다음장부터는 이렇게 mongo shell에 접속한 상태에서 진행해보자.
 
-![MongoDB Ready](img/mongoDB_StartSever.png)
+<img src="/Users/bangirimben/Rphabet.github.io/_posts/img/mongoDB_StartSever.png" alt="">
 
