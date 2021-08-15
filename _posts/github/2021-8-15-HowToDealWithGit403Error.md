@@ -88,3 +88,7 @@ To https://github.com/rphabet/rphabet.github.io.git
 이상 깃린이였습니다. 👋 
 
 ![git403_img1](/github/img/git403_img1.png)
+
+![img_1_usingGitAddress](https://raw.githubusercontent.com/Rphabet/Rphabet.github.io/master/_posts/github/img/git403_img1.png)
+
+![template_relative_url]({{"/github/img/git403_img1.png"| relative_url}})
