@@ -5,11 +5,6 @@ categories: [git]
 tags: [git, issue] 
 math: true
 comments: true
-image:
-  src: img/mongoDB_StartSever.png
-  width: 1000   # in pixels
-  height: 400   # in pixels
-  alt: image alternative text
 typora-root-url: ../
 
 ---
