@@ -10,7 +10,7 @@ image:
   width: 1000   # in pixels
   height: 400   # in pixels
   alt: image alternative text
-
+typora-root-url: ../
 
 ---
 
@@ -86,3 +86,5 @@ To https://github.com/rphabet/rphabet.github.io.git
 
 
 이상 깃린이였습니다. 👋 
+
+![git403_img1](/github/img/git403_img1.png)
