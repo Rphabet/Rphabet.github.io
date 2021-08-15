@@ -36,11 +36,11 @@ fatal: unable to access 'https://github.com/Rphabet/Rphabet.github.io.git/': The
 
 거두절미 하고 해결 방법에 대해 알아보죠.
 
-1.  깃헙 페이지에서 우상단에 있는 프로필을 눌러 `Settings` 로 들어갑시![git403_img1](/../assets/images/git403_img1.png)다.
+1.  깃헙 페이지에서 우상단에 있는 프로필을 눌러 `Settings` 로 들어갑시다.![git403_img1](/../assets/images/github/git403_img1.png)
 
-2. 그리고 Devloper settings 를 클릭하게 되면![git403_img2](/../assets/images/git403_img2.png)
+2. 그리고 Devloper settings 를 클릭하게 되면![git403_img2](/../assets/images/github/git403_img2.png)
 
-3. 이런 화면에 들어오게 됩니다. 세번째 탭인 `Personal access tokens` 를 눌러줍시다. ![git403_img3](/Users/bangirimben/Rphabet.github.io/assets/images/github/git403_img3.png)![git403_img3](/../assets/images/github/git403_img3.png)
+3. 이런 화면에 들어오게 됩니다. 세번째 탭인 `Personal access tokens` 를 눌러줍시다.![git403_img3](/../assets/images/github/git403_img3.png)
 
 4. 그러면 우측 상단에 `Generate new token` 버튼이 있는걸 볼 수 있는데 그대로 눌러주시면 됩니다. (저는 이미 생성했기에 Revoke all 버튼이 생성되어 있어 다를 수 있습니다.)![git403_img4](/../assets/images/github/git403_img4.png)
 
@@ -85,10 +85,4 @@ To https://github.com/rphabet/rphabet.github.io.git
 
 
 
-이상 깃린이였습니다. 👋 
-
-![git403_img1](/github/img/git403_img1.png)
-
-![img_1_usingGitAddress](https://raw.githubusercontent.com/Rphabet/Rphabet.github.io/master/_posts/github/img/git403_img1.png)
-
-![template_relative_url]({{"/github/img/git403_img1.png"| relative_url}})
+이상 깃린이였습니다. 👋
