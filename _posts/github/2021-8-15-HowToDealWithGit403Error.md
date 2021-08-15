@@ -36,13 +36,13 @@ fatal: unable to access 'https://github.com/Rphabet/Rphabet.github.io.git/': The
 
 거두절미 하고 해결 방법에 대해 알아보죠.
 
-1.  깃헙 페이지에서 우상단에 있는 프로필을 눌러 `Settings` 로 들어갑시다.<img src="/Users/bangirimben/Rphabet.github.io/_posts/img/git403_img1.png" alt="">
+1.  깃헙 페이지에서 우상단에 있는 프로필을 눌러 `Settings` 로 들어갑시다.![img1](/Users/bangirimben/Rphabet.github.io/_posts/github/img/git403_img1.png)
 
-2. 그리고 Devloper settings 를 클릭하게 되면<img src="/Users/bangirimben/Rphabet.github.io/_posts/img/git403_img2.png" alt="">
+2. 그리고 Devloper settings 를 클릭하게 되면![img2](img/git403_img2.png)
 
-3. 이런 화면에 들어오게 됩니다. 세번째 탭인 `Personal access tokens` 를 눌러줍시다.<img src="/Users/bangirimben/Rphabet.github.io/_posts/img/git403_img3.png" alt="">
+3. 이런 화면에 들어오게 됩니다. 세번째 탭인 `Personal access tokens` 를 눌러줍시다.<img src="/Users/bangirimben/Rphabet.github.io/_posts/img/git403_img3.png">
 
-4. 그러면 우측 상단에 `Generate new token` 버튼이 있는걸 볼 수 있는데 그대로 눌러주시면 됩니다. (저는 이미 생성했기에 Revoke all 버튼이 생성되어 있어 다를 수 있습니다.)<img src="/Users/bangirimben/Rphabet.github.io/_posts/img/git403_img4.png" alt="">
+4. 그러면 우측 상단에 `Generate new token` 버튼이 있는걸 볼 수 있는데 그대로 눌러주시면 됩니다. (저는 이미 생성했기에 Revoke all 버튼이 생성되어 있어 다를 수 있습니다.)![img4](img/git403_img4.png)
 
    그리고 토큰을 처음 받게되면 토큰 일련번호를 받을 수 있으실텐데요. 정말 중요한 키니깐 꼭 어딘가에 기록해두길 바랍니다. 
 

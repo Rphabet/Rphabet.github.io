@@ -5,12 +5,6 @@ categories: [DBMS, MongoDB]
 tags: [DBMS, SQL, MongoDB] 
 math: true
 comments: true
-image:
-  src: img/mongoDB_StartSever.png
-  width: 1000   # in pixels
-  height: 400   # in pixels
-  alt: image alternative text
-
 ---
 
 # MongDB Mac OS 설치부터 실행까지
@@ -193,5 +187,10 @@ The server generated these startup warnings when booting:
 
 다음장부터는 이렇게 mongo shell에 접속한 상태에서 진행해보자.
 
-<img src="/Users/bangirimben/Rphabet.github.io/_posts/img/mongoDB_StartSever.png" alt="">
+이미지태그
 
+<img src="img/mongoDB_StartSever.png" alt="">
+
+![double shell 상대경로](img/mongoDB_StartSever.png)
+
+![double shell 절대경로](/Users/bangirimben/Rphabet.github.io/_posts/MongoDB/img/mongoDB_StartSever.png)
