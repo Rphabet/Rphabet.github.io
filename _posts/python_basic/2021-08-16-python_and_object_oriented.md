@@ -2,7 +2,7 @@
 title: 파이썬과 객체지향, 그리고 절차지향의 이해 (1)
 date: 2021-08-16 13:00:00 +0900
 categories: [python, class]
-tags: [python, object-oriented, class] 
+tags: [object-oriented] 
 math: true
 comments: true
 typora-root-url: ../
