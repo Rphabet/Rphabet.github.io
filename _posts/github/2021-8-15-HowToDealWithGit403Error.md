@@ -9,7 +9,7 @@ typora-root-url: ../
 
 ---
 
-# git error 403 해결 방법
+
 
 ---
 
