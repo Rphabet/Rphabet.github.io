@@ -6,8 +6,6 @@ tags: [object-oriented]
 math: true
 comments: true
 typora-root-url: ../
-
-
 ---
 
 ---
