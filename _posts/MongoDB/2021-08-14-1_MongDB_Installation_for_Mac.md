@@ -8,7 +8,7 @@ comments: true
 typora-root-url: ../
 ---
 
-# MongDB Mac OS 설치부터 실행까지
+
 
 ---
 
@@ -110,7 +110,7 @@ Build Info: {
 $ mongod
 ```
 
-처음 MongoDB를 설치하면 문제가 발생했다면서 다음과 같은 문장이 등장한다.
+처음 MongoDB를 설치하면 문제가 발생했다면서 다음과 같은 문제에 직면할 수 있다.
 
 ```bash
 exception in initAndListen: NonExistentPath: Data directory not found
