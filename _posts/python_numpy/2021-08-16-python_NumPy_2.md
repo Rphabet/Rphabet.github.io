@@ -1,5 +1,5 @@
 ---
-title: [python] NumPy 기초 (2)  
+title: python NumPy 기초 (2)  
 date: 2021-08-16 18:00:00 +0900
 categories: [python, NumPy]
 tags: [ML, python, numpy] 
