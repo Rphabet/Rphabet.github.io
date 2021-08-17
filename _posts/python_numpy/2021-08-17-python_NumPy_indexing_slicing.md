@@ -7,15 +7,15 @@ math: true
 comments: true
 image:
   src: /../assets/images/Numpy/logo.png
-  width: 1000
-  height: 400
+  width: 500
+  height: 200
   alt: numpy logo
 typora-root-url: ../
 ---
 
 ---
 
-![logo](/../assets/images/Numpy/logo.png)이번 포스팅에선 **NumPy**의 인덱싱(indexing)과 슬라이싱(slicing)에 대해 알아보자.
+이번 포스팅에선 **NumPy**의 인덱싱(indexing)과 슬라이싱(slicing)에 대해 알아보자.
 
 Numpy는 머신러닝, 딥러닝의 기본적인 자료구조가 되는 친구라고 소개를 했는데, 오늘은 응용연산에 대해 두개의 포스팅으로 나누어 소개하고자 한다.
 
