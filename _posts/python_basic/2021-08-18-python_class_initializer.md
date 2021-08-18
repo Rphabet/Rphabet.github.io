@@ -1,5 +1,5 @@
 ---
-title: 파이썬과 객체지향, 그리고 절차지향의 이해 (2)
+title: 파이썬과 객체지향, 그리고 절차지향의 이해 (3)
 date: 2021-08-18 17:03:00 +0900
 categories: [python, class]
 tags: [object-oriented, python, 파이썬, 프로그래밍, 클래스, class, 생성자] 
