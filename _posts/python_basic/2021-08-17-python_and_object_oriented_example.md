@@ -80,7 +80,7 @@ class Student(object):
         self.grade = grade # 성적
         
     def get_student_info(self):      # 마찬가지로 첫번째 인자엔 self 가 들어와야함
-        print(self.name, self.dept)
+        print(self.name, self.dept, self.num, self.grade)
     
     def set_stu_name(self, name):
         self.name = name
