@@ -25,18 +25,17 @@ typora-root-url: ../
 ```python
 # 자동차 class를 만들어보자.
 class Car(object):
-    def set_car_spec(self, brand, model):
+    def set_car_spec(self, brand: str, model: str):
         self.brand = brand
         self.model = model
         
     def info(self):
-        context = {'brand': self.brand,
-                   'model': self.model}
+        context = {'brand': self.brand, 'model': self.model}
         print(context)
 # ***여기서 self는  class 자체를 지칭한다.         
 
 my_car = Car()   # my_car라는 내 자동차 객체를 만들고
-my_car.set_car_spec('hyundai', 'genesis')  # 현대의 제네시스라는 차로 입력을 해주자.
+my_car.set_car_spec(brand='hyundai', model='genesis')  # 현대의 제네시스라는 차로 입력을 해주자.
 my_car.info()    # 이렇게 정보 호출 메서드를 사용한다면....:
 # {'brand': 'hyundai', 'model': 'genesis'}
 # 브랜드는 현대, 차종은 제네시스 라는 정보를 dictionary 값으로 리턴을 해준다
@@ -67,9 +66,8 @@ AttributeError                            Traceback (most recent call last)
 <ipython-input-7-86e27dd64ac5> in info(self)
       6 
       7     def info(self):
-----> 8         context = {'brand': self.brand,
-      9                    'model': self.model}
-     10         print(context)
+----> 8         context = {'brand': self.brand,'model': self.model}
+      9         print(context)
 
 AttributeError: 'Car' object has no attribute 'brand'
 ```
@@ -84,20 +82,19 @@ AttributeError: 'Car' object has no attribute 'brand'
 
 ```python
 class Car(object):
-    def __init__(self, brand, model):
+    def __init__(self, brand: str, model: str):
         self.brand = brand   
         self.model = model
   
-    def set_car_spec(self, brand, model):
+    def change_car_spec(self, brand: str, model: str):
         self.brand = brand
         self.model = model
         
     def info(self):
-        context = {'brand': self.brand,
-                   'model': self.model}
+        context = {'brand': self.brand, 'model': self.model}
         print(context)
 
-my_car = Car('hyundai', 'genesis')   # my_car라는 내 자동차 객체를 만들고
+my_car = Car(brand='hyundai', model='genesis')   # my_car라는 내 자동차 객체를 만들고
 my_car.info()   
 # 출력물:  {'brand': 'hyundai', 'model': 'genesis'}
 
