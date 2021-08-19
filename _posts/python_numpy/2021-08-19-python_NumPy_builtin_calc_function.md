@@ -1,6 +1,6 @@
 ---
 title: python NumPy만의 집계함수
-date: 2021-08-19 20:38:00 +0900
+date: 2021-08-19 11:05:00 +0900
 categories: [python, NumPy]
 tags: [ML, python, numpy, 머신러닝] 
 math: true
