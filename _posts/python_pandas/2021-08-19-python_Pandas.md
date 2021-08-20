@@ -1,5 +1,5 @@
 ---
-title: python Pandas (1): 데이터프레임으로 데이터 가져오기
+title: python Pandas\: 데이터프레임으로 데이터 가져오기
 date: 2021-08-20 14:00:00 +0900
 categories: [python, pandas]
 tags: [ML, python, numpy, pandas, 머신러닝] 
