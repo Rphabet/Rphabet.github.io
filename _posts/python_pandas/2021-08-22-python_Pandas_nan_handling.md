@@ -1,5 +1,5 @@
 ---
-title: python Pandas (5) NaN 핸들링
+title: python Pandas (6) NaN 핸들링
 date: 2021-08-22 20:48:00 +0900
 categories: [python, pandas]
 tags: [python, numpy, pandas, 프로그래밍, 데이터] 
