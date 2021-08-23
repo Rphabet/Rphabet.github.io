@@ -1,6 +1,6 @@
 ---
 title: python Pandas (9) DataFrame Concatenation
-date: 2021-08-23 17:35:00 +0900
+date: 2021-08-23 18:35:00 +0900
 categories: [python, pandas]
 tags: [python, numpy, pandas, merge, concatenateness] 
 math: true
