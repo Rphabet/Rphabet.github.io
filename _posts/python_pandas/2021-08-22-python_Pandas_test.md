@@ -1,6 +1,6 @@
 ---
-title: python Pandas (10) test
-date: 2021-08-23 10:09:00 +0900
+title: python Pandas test
+date: 2021-08-22 19:09:00 +0900
 categories: [python, pandas]
 tags: [python, numpy, pandas, 프로그래밍, 데이터] 
 math: true
@@ -11,9 +11,6 @@ image:
   height: 200
   alt: numpy logo
 typora-root-url: ../
-
-
-
 ---
 
 ---
