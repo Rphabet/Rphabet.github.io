@@ -45,15 +45,15 @@ kim.intro() # 메서드를 불러보자.
 
 ```python
 class Student(Human):    # 상속을 받을때는 항상 매개변수로 부모 Class를 사용해야함
-		def __init__(self, age, name, stunum):
+    def __init__(self, age, name, stunum):
         super().__init__(age, name)     # super()라는 메서드를 통해서 부모 메서드를 호출할 수 있음.
         self.stunum = stunum   # 학번은 부모 class 에서는 없던 속성이니 새롭게 추가해주자.
 
-		def intro(self):
+    def intro(self):
         super().intro()   # 마찬가지로 부모 메서드를 호출
         print("학번 : {}".format(self.stunum))
         
-		def study(self):
+    def study(self):
         print("얄리얄리 얄라셩 얄라리 얄라")
         
 lee = Student(34, "이승범", 1657637)
