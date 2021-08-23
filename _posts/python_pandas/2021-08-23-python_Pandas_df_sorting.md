@@ -9,7 +9,7 @@ image:
   src: /../assets/images/pandas/logo.png
   width: 500
   height: 200
-  alt: pandas logo
+  alt: numpy logo
 typora-root-url: ../
 ---
 
