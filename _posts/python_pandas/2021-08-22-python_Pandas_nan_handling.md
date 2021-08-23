@@ -11,8 +11,6 @@ image:
   height: 200
   alt: numpy logo
 typora-root-url: ../
-
-
 ---
 
 ---
