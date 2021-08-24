@@ -202,7 +202,7 @@ for dept, group in df.groupby(df['학과']):
     print(dept)
     display(group) # dept 그룹에 대한 dataframe이 나옴.
 """
-i=0 (첫번째 포문):  
+i=0 (첫번째 iteration):  
 (학과)
 철학
 
@@ -210,7 +210,7 @@ i=0 (첫번째 포문):
 1 철학   김연아   2    2.7
 3 철학   강감찬   4    1.9
 
-i=1 (두번째 포문):
+i=1 (두번째 iteration):
 (학과)
 컴퓨터
 
@@ -233,7 +233,7 @@ for (dept, year), group in df.groupby([df['학과'], df['학년']]):
     print(dept, year)
     display(group)
 """
-i=0 (첫번째 포문):
+i=0 (첫번째 iteration):
 (학과) (학년)
  철학     2
 
@@ -242,14 +242,14 @@ i=0 (첫번째 포문):
 3 철학   강감찬   2    1.9
 
 
-i=1 (두번째 포문):
+i=1 (두번째 iteration):
 (학과) (학년)
  컴퓨터   1
  
    학과   이름   학년   학점
 0  컴퓨터 아이유   1    1.5
 
-i=2 (세번째 포문):
+i=2 (세번째 iteration):
 (학과) (학년)
  컴퓨터   3
   
