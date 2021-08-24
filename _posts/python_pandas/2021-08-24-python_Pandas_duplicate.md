@@ -160,7 +160,7 @@ display(df.drop_duplicates(['k1'])) # 이렇게 인자에 [컬럼명]을 사용�
 """
    k1  k2  k3
 0 one  1   0
-3	two  3   3
+3 two  3   3
 """
 # 이렇게 k1의 값이 중복된 행을 제거해서 나타낸다.
 
