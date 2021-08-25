@@ -26,7 +26,7 @@ typora-root-url: ../
 
 아래의 그래프에 대한 설명은 지금 당장은 따로 하지 않겠다 (추후 수정을 통해 업데이트 하겠음!). 다만 이해에 도움이 되길 바랄 뿐이다.
 
-![differentiation](/../assets/images/math/differentiation.png)
+![differentiation](/../assets/images/math/diff.png)
 
 
 
