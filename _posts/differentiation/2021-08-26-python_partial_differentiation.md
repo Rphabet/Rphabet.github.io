@@ -2,7 +2,7 @@
 title: python으로 하는 수치미분 (Numerical Differentiation) (2)
 date: 2021-08-26 16:17:00 +0900
 categories: [python, mathematics]
-tags: [python, differentiation, numerical] 
+tags: [python, differentiation, derivative, 미분, 파이썬] 
 math: true
 comments: true
 typora-root-url: ../
@@ -30,7 +30,7 @@ $$ f(x, y) = 2x + 3xy + y^3 $$
 정답이다. 
 하지만 이상적인 정답이라고 할 순 없다!
 
-왜냐고?? 만약에 변수가 $ f(x, y, z) $ 라면? 또는 $ f(a, b, c, d, e, f, g, h, i, j, k, l, ..., z) $ 라면? 
+왜냐고?? 만약에 변수가 $ f(x, y, z) $ 라면? 또는 $ f(a, b, c, d, ...,y, z) $ 라면? 
 식에 대핸 새로운 함수를 정의하고 그 함수에 대응하는 수치미분 함수를 또 다시 정의하고 코드를 뜯어 고쳐야하기 때문이다.
 
 파이썬이 흥행한 이유가 무엇인가?? **유지 보수성**이 탁월하기때문 아니던가! 
@@ -115,7 +115,7 @@ print(result)
 
 $$ f(x, y) = 2x + 3xy + y^3 $$
 
-$$ \frac{\delta f}{\delta x} =  2 + 3y $$
+$$ \frac{\partial f}{\partial x} =  2 + 3y $$
 
 `x = 1.0` `y=2.0`의 값을 대입해보면... 
 
@@ -123,7 +123,7 @@ $$ f_{x}'(1.0, 2.0) = 2 + 3(2.0) = 2 + 6 = 8 $$
 
 마찬가지로 `y`에 대한 편미분을 해보면
 
-$$ \frac{\delta f}{\delta x} = 3x + 3y^2 $$
+$$ \frac{\partial f}{\partial x} = 3x + 3y^2 $$
 
 $$ f_{y}'(1.0, 2.0) = 3(1) + 3(2)^2 = 3 + 3(4) = 15 $$
 
