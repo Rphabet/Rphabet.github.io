@@ -1,6 +1,6 @@
 ---
 title: python으로 하는 수치미분 (Numerical Differentiation) (2)
-date: 2021-08-26 16:30:00 +0900
+date: 2021-08-26 16:17:00 +0900
 categories: [python, mathematics]
 tags: [python, differentiation, numerical] 
 math: true
