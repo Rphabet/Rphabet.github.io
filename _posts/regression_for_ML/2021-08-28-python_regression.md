@@ -70,7 +70,7 @@ $$ y = Wx + b $$
 
 $$ E(W,b) = \frac{(t_1 - y_1)^2 + (t_2 - y_2)^2 + . . . + (t_n - y_n)^2}{n} $$
 
-$$ E(W, b) = \fract{[t_1 - (Wx_1 + b)]^2 + [t_2 - (Wx_2 + b)]^2 + . . . + [t_n - (Wx_n + b)]^2}{n} $$
+$$ E(W, b) = \frac{[t_1 - (Wx_1 + b)]^2 + [t_2 - (Wx_2 + b)]^2 + . . . + [t_n - (Wx_n + b)]^2} {n} $$
 
 따러서, $ E(W, b) = \frac{1}{n} \sum_{i=1}^{n}[t_i - (Wx_i + b)]^2   의 형태로 나타낼 수 있다.
 
@@ -86,7 +86,7 @@ $$ E(W, b) = \fract{[t_1 - (Wx_1 + b)]^2 + [t_2 - (Wx_2 + b)]^2 + . . . + [t_n -
 
 1. 임의의 가중치 $W$ 를 선택
 2. 손실함수 곡선 어느 위치에서든 직선의 기울기를 구한다 (다시 말하면 해당점의 미분 계수를 찾는다. 아래의 그래프를 보자.).
-3. $ W' = W - \alpha \cross \frac{\partialE(W,b)}{\partialW} $, where $ \alpha $는 ***learning rate***라는 상수
+3. $ W' = W - \alpha \times \frac{\partial E(W,b)}{\partial W} $, where $ \alpha $는 ***learning rate***라는 상수
    - ***learning rate***는 곡선의 한점에서 다른 점으로 이동할 때, 값이 너무 크게 올라가는것을 방지하기 위한 수단으로 쓰인다.
    - ***learning rate***는 사용자가 임의로 customizing 해야한다. (보통은 작은 수로 설정 e.g. 0.001)
 4. 반복횟수를 지정해줘야한다.
