@@ -36,7 +36,7 @@ typora-root-url: ../
   
 - **Core courses**:
   | Mathematics | Economics | Programming |
-  |---------------|---------------|---------------|
+  |---|---|---|
   |Calculus 1, 2, 3 | Microeconomics | C programming|
   | Differential Equations | Macroeconomics | Intro. Scientific Programming (python) |
   | Discrete Mathematics | Advanced Game Theory Concepts | Methods of Data Analysis (R) |
