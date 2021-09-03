@@ -35,6 +35,7 @@ typora-root-url: ../
   (*3.72/4.0*)
   
 - **Core courses**:
+
   | Mathematics | Economics | Programming |
   |-------------|-----------|-------------|
   |Calculus 1, 2, 3 | Microeconomics | C programming|
