@@ -17,8 +17,8 @@ typora-root-url: ../
 
 - **Education** 
 
-  1. **London School of Economics** *Msc Economics*
-   - LSE 교내 학생 학술지 'Rationale' 부편집인 (associate editor) 
+1. **London School of Economics** *Msc Economics*
+    LSE 교내 학생 학술지 '*Rationale*' 부편집인 (associate editor) 
   
 2. **University of Edinburgh** *MA Hons Economics*
      *(3.8/4.0)*
@@ -26,7 +26,7 @@ typora-root-url: ../
 3. **UC Berkeley** *Non-URGD; Summer School*
      (3.0/4.0) 
 
-  4. **University of North Carolina at Chapel Hill** *Non-URGD; Exchange Programme & Summer School* 
+4. **University of North Carolina at Chapel Hill** *Non-URGD; Exchange Programme & Summer School* 
      (*3.72/4.0*)
 
 - **Core courses**:
