@@ -36,7 +36,7 @@ typora-root-url: ../
   
 - **Core courses**:
   | Mathematics | Economics | Programming |
-  |---|---|---|
+  |-------------|-----------|-------------|
   |Calculus 1, 2, 3 | Microeconomics | C programming|
   | Differential Equations | Macroeconomics | Intro. Scientific Programming (python) |
   | Discrete Mathematics | Advanced Game Theory Concepts | Methods of Data Analysis (R) |
@@ -92,9 +92,10 @@ typora-root-url: ../
 
 1. **[웹개발 프로젝트 GETAWAY](https://github.com/Rphabet/GetawayTeam)** (본인 외 3명)
    - 프로젝트: 여행 커뮤니티 웹 구축
-   - 역할: 자유게시판, 로그인, 댓글, 좋아요 기능 담당
+   - 역할: 자유게시판, 댓글, 좋아요 기능 담당 
    - 사용언어: python (Django), jQuery, HTML
-
+   - 프로젝트 기여도: 25%
+   
 2. 일일박스오피스 
 
 ---
