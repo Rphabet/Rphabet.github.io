@@ -9,7 +9,7 @@ typora-root-url: ../
 
 ---
 
-계량경제학을 공부하면서부터 데이터에 빠져든 열정 넘치는 데이터 블로거 반기림입니다.
+계량경제학을 공부하면서부터 데이터에 빠져든 열정 넘치는 데이터 블로거 **Big Ben**입니다.
 
 ## Bio
 
@@ -17,22 +17,16 @@ typora-root-url: ../
 
 - **Education** 
 
-  **London School of Economics** *Msc Economics*
+  1. **London School of Economics** *Msc Economics*
 
+  2. **University of Edinburgh** *MA Hons Economics*
+     *(3.8/4.0)*
   
-
-  **University of Edinburgh** *MA Hons Economics*
-  *(3.8/4.0)*
-
+  3. **UC Berkeley** *Non-URGD; Summer School*
+     (3.0/4.0) 
   
-
-  **UC Berkeley** *Non-URGD; Summer School*
-  (3.0/4.0) 
-
-  
-
-  **University of North Carolina at Chapel Hill** *Non-URGD; Exchange Programme & Summer School* 
-  (*3.72/4.0*)
+  4. **University of North Carolina at Chapel Hill** *Non-URGD; Exchange Programme & Summer School* 
+     (*3.72/4.0*)
   
 - **Core courses**:
 
