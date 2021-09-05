@@ -50,7 +50,7 @@ Logistic Regression을 사용한다면 `sigmoid`와 친해질 필요가 있다. 
 | | 선형 회귀 | 로지스틱 회귀 |
 | --- | --- | ---|
 |기본 수식 | $ y = WX + b $ | $ y = \frac{1}{1+e^{-(WX+b)}} $ |
-| Loss function | $ E(w,b) = /frac{1}{n}\sum^{n}_{i=1}[t_i - (w_ix_i+b)]^2 $ | <s>$ E(w,b) = /frac{1}{n}\sum^{n}_{i=1}[t_i - \frac{1}{1+e^{-(w_ix_i+b)}}]^2 $ </s><br /> $ E(w,b) = -\sum^{n}_{i=1}[t_ilog(y_i)+(1-t_i)log(1-y_i)] $ |
+| Loss<br/> function | $ E(w,b) = \frac{1}{n}\sum^{n}_{i=1}[t_i - (w_ix_i+b)]^2 $ | <s>$ E(w,b) = \frac{1}{n}\sum^{n}_{i=1}[t_i - \frac{1}{1+e^{-(w_ix_i+b)}}]^2 $ </s><br /> $ E(w,b) = -\sum^{n}_{i=1}[t_ilog(y_i)+(1-t_i)log(1-y_i)] $ |
 
 최적의 $ W $ 와 $b$를 구하기 위해 손실함수를 미분하여 $W$, $b$를 갱신한다는 점에서 선형회귀와 비슷하다고 볼 수 있다. 하지만 문제는 로지스틱 회귀 분석의 경우 손실함수의 그래프 곡선이 convexity의 성격을 갖고 있지 않아서 실제로 loss function의 값이 최소화 되었는지 모른다는 점이다. 
 
