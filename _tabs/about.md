@@ -15,18 +15,15 @@ typora-root-url: ../
 
 - **Name**: Girim Ban (반기림)
 
-- **Education** 
+- **Education** <br>
 
 1. **London School of Economics** *Msc Economics*
-    
 2. **University of Edinburgh** *MA Hons Economics*
      *(3.8/4.0)*
-  
 3. **UC Berkeley** *Non-URGD; Summer School*
      (3.0/4.0) 
-
 4. **University of North Carolina at Chapel Hill** *Non-URGD; Exchange Programme & Summer School* 
-     (*3.72/4.0*)
+     (*3.72/4.0*)   <br>
 
 - **Core courses**:
 
