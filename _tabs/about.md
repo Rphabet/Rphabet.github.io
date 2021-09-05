@@ -18,8 +18,7 @@ typora-root-url: ../
 - **Education** 
 
 1. **London School of Economics** *Msc Economics*
-    LSE 교내 학생 학술지 '*Rationale*' 부편집인 (associate editor) 
-  
+    
 2. **University of Edinburgh** *MA Hons Economics*
      *(3.8/4.0)*
   
@@ -41,7 +40,15 @@ typora-root-url: ../
   | Advanced Mathematical Economics | Econometrics | |
   | | Statistical Methods for Economics | |
   
-  
+
+---
+
+## Extra-curricular Activities
+
+1. LSE 교내 학생 학술지 '*Rationale*' 부편집인 (associate editor)   2020.09 ~ 2021.06
+2. SLICC (Student-Led Individually Created Course)  2017.06 ~ 2017.08
+   - Title: **<Statistical Methods of Research>**
+   - Supervisor: Dr. Gavin McCabe
 
 ---
 
