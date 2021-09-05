@@ -25,6 +25,8 @@ typora-root-url: ../
 4. **University of North Carolina at Chapel Hill** *Non-URGD; Exchange Programme & Summer School* 
      (*3.72/4.0*)   <br>
 
+
+
 - **Core courses**:
 
   | Mathematics | Economics | Programming |
@@ -44,7 +46,7 @@ typora-root-url: ../
 
 1. LSE 교내 학생 학술지 '*Rationale*' 부편집인 (associate editor)   2020.09 ~ 2021.06
 2. SLICC (Student-Led Individually Created Course)  2017.06 ~ 2017.08
-   - Title: **<Statistical Methods of Research>**
+   - Title: **Statistical Methods of Research**
    - Supervisor: Dr. Gavin McCabe
 
 ---
