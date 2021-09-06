@@ -1,7 +1,7 @@
 ---
 title: TensorFlow 기초
 date: 2021-09-03 17:35:00 +0900
-categories: [python, regression]
+categories: [python, tensorflow]
 tags: [python, regression, 회귀분석, ML, 머신러닝, tensorflow, 텐서플로우] 
 math: true
 comments: true
