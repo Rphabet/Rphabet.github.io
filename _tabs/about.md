@@ -115,11 +115,11 @@ typora-root-url: ../
 
 ## Skills 👨‍💻 
 
-- **python** (능숙): `numpy`, `pandas`, `matplotlib`, `seaborn`, `sklearn`, `scipy`, `tensorflow`
-- **R** (익숙): `dplyr`, `ggplot2`
-- **STATA** (익숙) 
-- SQL (기본): 기본적인 문법, DBMS 작동 원리, CRUD 등을 인지하고 있으며, python으로 SQL쿼리를 처리할 줄 알고 있음.
-- Markdown (익숙): 블로그 포스팅, 논문 요약본 등 많은 부분에서 활용하고 있음
+- **python**: `numpy`, `pandas`, `matplotlib`, `seaborn`, `sklearn`, `scipy`, `tensorflow`
+- **R**: `dplyr`, `ggplot2`
+- **STATA**  
+- SQL
+- Markdown
 
 ---
 
