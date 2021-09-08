@@ -1,6 +1,6 @@
 ---
 title: python으로 하는 머신러닝 로지스틱 회귀분석 예제 (scikit learn version)
-date: 2021-09-08 17:41:00 +0800
+date: 2021-09-08 17:41:00 +0900
 categories: [python, regression]
 tags: [python, regression, 회귀분석, ML, 머신러닝, sklearn, k-fold, logistic, 로지스틱] 
 math: true
