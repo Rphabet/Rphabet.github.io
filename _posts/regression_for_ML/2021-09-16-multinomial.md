@@ -1,6 +1,6 @@
 ---
 title: 머신러닝 다중분류 로지스틱 작동 원리 Multinomial Classification
-date: 2021-09-16 18:03:00 +0900
+date: 2021-09-16 17:43:00 +0900
 categories: [python, ML]
 tags: [python, ML, 머신러닝, tensorflow, 텐서플로우, Keras, Logistic] 
 math: true
