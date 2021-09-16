@@ -1,0 +1,321 @@
+<!DOCTYPE html><html lang="en" ><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta name="day-prompt" content="days ago"><meta name="hour-prompt" content="hours ago"><meta name="minute-prompt" content="minutes ago"><meta name="justnow-prompt" content="just now"><meta name="generator" content="Jekyll v4.2.0" /><meta property="og:title" content="python으로 하는 머신러닝 로지스틱 회귀분석" /><meta property="og:locale" content="en" /><meta name="description" content="BigBen’s Log, BBlog" /><meta property="og:description" content="BigBen’s Log, BBlog" /><link rel="canonical" href="https://rphabet.github.io//posts/python_logistic_reg_with_code/" /><meta property="og:url" content="https://rphabet.github.io//posts/python_logistic_reg_with_code/" /><meta property="og:site_name" content="Big Ben’s Log" /><meta property="og:type" content="article" /><meta property="article:published_time" content="2021-09-05T18:34:00+09:00" /><meta name="twitter:card" content="summary" /><meta property="twitter:title" content="python으로 하는 머신러닝 로지스틱 회귀분석" /><meta name="twitter:site" content="@twitter_username" /><meta name="google-site-verification" content="google_meta_tag_verification" /> <script type="application/ld+json"> {"description":"BigBen’s Log, BBlog","url":"https://rphabet.github.io//posts/python_logistic_reg_with_code/","@type":"BlogPosting","headline":"python으로 하는 머신러닝 로지스틱 회귀분석","dateModified":"2021-09-05T18:34:00+09:00","datePublished":"2021-09-05T18:34:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://rphabet.github.io//posts/python_logistic_reg_with_code/"},"@context":"https://schema.org"}</script><title>python으로 하는 머신러닝 로지스틱 회귀분석 | Big Ben's Log</title><link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicons/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicons/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicons/favicon-16x16.png"><link rel="manifest" href="/assets/img/favicons/site.webmanifest"><link rel="shortcut icon" href="/assets/img/favicons/favicon.ico"><meta name="apple-mobile-web-app-title" content="Big Ben's Log"><meta name="application-name" content="Big Ben's Log"><meta name="msapplication-TileColor" content="#da532c"><meta name="msapplication-config" content="/assets/img/favicons/browserconfig.xml"><meta name="theme-color" content="#ffffff"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"><link rel="dns-prefetch" href="https://fonts.gstatic.com"><link rel="preconnect" href="https://www.google-analytics.com" crossorigin="use-credentials"><link rel="dns-prefetch" href="https://www.google-analytics.com"><link rel="preconnect" href="https://www.googletagmanager.com" crossorigin="anonymous"><link rel="dns-prefetch" href="https://www.googletagmanager.com"><link rel="preconnect" href="https://cdn.jsdelivr.net"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.11.2/css/all.min.css"><link rel="stylesheet" href="/assets/css/style.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@1.0.1/dist/bootstrap-toc.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/magnific-popup@1.1.0/dist/magnific-popup.min.css"> <script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script><body data-spy="scroll" data-target="#toc"><div id="sidebar" class="d-flex flex-column align-items-end" lang="en"><div class="profile-wrapper text-center"><div id="avatar"> <a href="/" alt="avatar" class="mx-auto"> <img src="https://cdn.jsdelivr.net/gh/cotes2020/chirpy-images/commons/avatar.jpg" alt="avatar" onerror="this.style.display='none'"> </a></div><div class="site-title mt-3"> <a href="/">Big Ben's Log</a></div><div class="site-subtitle font-italic">Econometrics, Data, Economics in that order</div></div><ul class="w-100"><li class="nav-item"> <a href="/" class="nav-link"> <i class="fa-fw fas fa-home ml-xl-3 mr-xl-3 unloaded"></i> <span>HOME</span> </a><li class="nav-item"> <a href="/categories/" class="nav-link"> <i class="fa-fw fas fa-stream ml-xl-3 mr-xl-3 unloaded"></i> <span>CATEGORIES</span> </a><li class="nav-item"> <a href="/tags/" class="nav-link"> <i class="fa-fw fas fa-tags ml-xl-3 mr-xl-3 unloaded"></i> <span>TAGS</span> </a><li class="nav-item"> <a href="/archives/" class="nav-link"> <i class="fa-fw fas fa-archive ml-xl-3 mr-xl-3 unloaded"></i> <span>ARCHIVES</span> </a><li class="nav-item"> <a href="/about/" class="nav-link"> <i class="fa-fw fas fa-info ml-xl-3 mr-xl-3 unloaded"></i> <span>ABOUT</span> </a></ul><div class="sidebar-bottom mt-auto d-flex flex-wrap justify-content-center"> <a href="https://github.com/rphabet" aria-label="github" class="order-3" target="_blank" rel="noopener"> <i class="fab fa-github-alt"></i> </a> <a href="https://twitter.com/twitter_username" aria-label="twitter" class="order-4" target="_blank" rel="noopener"> <i class="fab fa-twitter"></i> </a> <a href=" javascript:location.href = 'mailto:' + ['bangirim','gmail.com'].join('@')" aria-label="email" class="order-5" > <i class="fas fa-envelope"></i> </a> <a href="/feed.xml" aria-label="rss" class="order-6" > <i class="fas fa-rss"></i> </a> <span class="icon-border order-2"></span> <span id="mode-toggle-wrapper" class="order-1"> <i class="mode-toggle fas fa-adjust"></i> <script type="text/javascript"> class ModeToggle { static get MODE_KEY() { return "mode"; } static get DARK_MODE() { return "dark"; } static get LIGHT_MODE() { return "light"; } constructor() { if (this.hasMode) { if (this.isDarkMode) { if (!this.isSysDarkPrefer) { this.setDark(); } } else { if (this.isSysDarkPrefer) { this.setLight(); } } } var self = this; /* always follow the system prefers */ this.sysDarkPrefers.addListener(function() { if (self.hasMode) { if (self.isDarkMode) { if (!self.isSysDarkPrefer) { self.setDark(); } } else { if (self.isSysDarkPrefer) { self.setLight(); } } self.clearMode(); } self.updateMermaid(); }); } /* constructor() */ setDark() { $('html').attr(ModeToggle.MODE_KEY, ModeToggle.DARK_MODE); sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.DARK_MODE); } setLight() { $('html').attr(ModeToggle.MODE_KEY, ModeToggle.LIGHT_MODE); sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.LIGHT_MODE); } clearMode() { $('html').removeAttr(ModeToggle.MODE_KEY); sessionStorage.removeItem(ModeToggle.MODE_KEY); } get sysDarkPrefers() { return window.matchMedia("(prefers-color-scheme: dark)"); } get isSysDarkPrefer() { return this.sysDarkPrefers.matches; } get isDarkMode() { return this.mode == ModeToggle.DARK_MODE; } get isLightMode() { return this.mode == ModeToggle.LIGHT_MODE; } get hasMode() { return this.mode != null; } get mode() { return sessionStorage.getItem(ModeToggle.MODE_KEY); } /* get the current mode on screen */ get modeStatus() { if (this.isDarkMode || (!this.hasMode && this.isSysDarkPrefer) ) { return ModeToggle.DARK_MODE; } else { return ModeToggle.LIGHT_MODE; } } updateMermaid() { if (typeof mermaid !== "undefined") { let expectedTheme = (this.modeStatus === ModeToggle.DARK_MODE? "dark" : "default"); let config = { theme: expectedTheme }; /* re-render the SVG › <https://github.com/mermaid-js/mermaid/issues/311#issuecomment-332557344> */ $(".mermaid").each(function() { let svgCode = $(this).prev().children().html(); $(this).removeAttr("data-processed"); $(this).html(svgCode); }); mermaid.initialize(config); mermaid.init(undefined, ".mermaid"); } } flipMode() { if (this.hasMode) { if (this.isSysDarkPrefer) { if (this.isLightMode) { this.clearMode(); } else { this.setLight(); } } else { if (this.isDarkMode) { this.clearMode(); } else { this.setDark(); } } } else { if (this.isSysDarkPrefer) { this.setLight(); } else { this.setDark(); } } this.updateMermaid(); } /* flipMode() */ } /* ModeToggle */ let toggle = new ModeToggle(); $(".mode-toggle").click(function() { toggle.flipMode(); }); </script> </span></div></div><div id="topbar-wrapper" class="row justify-content-center topbar-down"><div id="topbar" class="col-11 d-flex h-100 align-items-center justify-content-between"> <span id="breadcrumb"> <span> <a href="/"> Home </a> </span> <span>python으로 하는 머신러닝 로지스틱 회귀분석</span> </span> <i id="sidebar-trigger" class="fas fa-bars fa-fw"></i><div id="topbar-title"> Post</div><i id="search-trigger" class="fas fa-search fa-fw"></i> <span id="search-wrapper" class="align-items-center"> <i class="fas fa-search fa-fw"></i> <input class="form-control" id="search-input" type="search" aria-label="search" autocomplete="off" placeholder="Search..."> <i class="fa fa-times-circle fa-fw" id="search-cleaner"></i> </span> <span id="search-cancel" >Cancel</span></div></div><div id="main-wrapper"><div id="main"><div class="row"><div id="post-wrapper" class="col-12 col-lg-11 col-xl-8"><div class="post pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4"><h1 data-toc-skip>python으로 하는 머신러닝 로지스틱 회귀분석</h1><div class="post-meta text-muted d-flex flex-column"><div> <span class="semi-bold"> Girim Ban </span> on <span class="timeago " data-toggle="tooltip" data-placement="bottom" title="Sun, Sep 5, 2021, 6:34 PM +0900" >Sep 5<i class="unloaded">2021-09-05T18:34:00+09:00</i> </span></div><div> <span class="readtime" data-toggle="tooltip" data-placement="bottom" title="1560 words">8 min read</span></div></div><div class="post-content"><hr /><h1 id="logistic-regression">Logistic Regression</h1><p>이번 포스팅에선 로지스틱 회귀분석을 <code class="language-plaintext highlighter-rouge">python</code>으로, <code class="language-plaintext highlighter-rouge">tensorflow</code>로, 그리고 <code class="language-plaintext highlighter-rouge">sklearn</code>으로 직접 구현해보자.</p><p>공부시간과 시험 합격에 대한 데이터를 간단하게 직접 만들어서 사용하자.</p><h2 id="1-python으로-하는-logistic-regression">1. python으로 하는 logistic regression</h2><div lang="python" class="language-python highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+</pre><td class="rouge-code"><pre><span class="c1"># 환경설정
+</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+
+<span class="c1"># 수치미분 
+</span><span class="k">def</span> <span class="nf">numerical_derivative</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+
+    <span class="n">delta_x</span> <span class="o">=</span> <span class="mf">1e-4</span>   
+    <span class="n">derivative_x</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>  
+    
+    <span class="n">it</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">nditer</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">flags</span><span class="o">=</span><span class="p">[</span><span class="s">'multi_index'</span><span class="p">])</span>
+    
+    <span class="k">while</span> <span class="ow">not</span> <span class="n">it</span><span class="p">.</span><span class="n">finished</span><span class="p">:</span>
+        <span class="n">idx</span> <span class="o">=</span> <span class="n">it</span><span class="p">.</span><span class="n">multi_index</span>
+        <span class="n">tmp</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>   
+        
+        <span class="n">x</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp</span> <span class="o">+</span> <span class="n">delta_x</span> 
+        <span class="n">fx_plus_delta_x</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> 
+        
+        <span class="n">x</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp</span> <span class="o">-</span> <span class="n">delta_x</span> 
+        <span class="n">fx_minus_delta_x</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        
+        <span class="n">derivative_x</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">fx_plus_delta_x</span> <span class="o">-</span> <span class="n">fx_minus_delta_x</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">delta_x</span><span class="p">)</span>
+        
+        <span class="n">x</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp</span>         
+        <span class="n">it</span><span class="p">.</span><span class="n">iternext</span><span class="p">()</span> 
+        
+    <span class="k">return</span> <span class="n">derivative_x</span>
+</pre></table></code></div></div><div lang="python" class="language-python highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre><td class="rouge-code"><pre><span class="c1"># training data set 준비
+# 그냥 내 마음대로 데이터 값을 주었다.
+</span>
+<span class="n">x_data</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">2</span><span class="p">).</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="c1"># 공부 시간
+</span><span class="n">t_data</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]).</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># 0은 불합격, 1은 합격
+</span></pre></table></code></div></div><p>위 데이터에 따르면 공부시간이 12시간일 때는 시험에 불합격하지만, 14시간이라면 합격을 한다. 그렇다면 실측 데이터가 없는 13시간일 땐 어떻게 되는걸까? 그걸 알아보자!</p><div lang="python" class="language-python highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+</pre><td class="rouge-code"><pre><span class="c1"># Weight and bias 설정
+</span><span class="n">W</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># 1x1 2차원 행렬로 설정
+</span><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> 
+
+<span class="c1">#### 각종 함수 정의
+# 예측함수 정의
+</span><span class="k">def</span> <span class="nf">logistic_predict</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    
+    <span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">dot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">W</span><span class="p">)</span> <span class="o">+</span> <span class="n">b</span>  <span class="c1"># linear
+</span>    <span class="n">y</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="p">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="n">z</span><span class="p">))</span>  <span class="c1"># sigmoid 함수
+</span>    
+    <span class="n">result</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">if</span> <span class="n">z</span> <span class="o">&gt;=</span> <span class="mf">0.5</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">return</span> <span class="n">result</span><span class="p">,</span> <span class="n">y</span>        <span class="c1"># 0과 1 결과값 뿐만 아니고 확률 y 까지 같이 리턴한다.
+</span>
+<span class="c1"># loss 함수 정의
+</span><span class="k">def</span> <span class="nf">loss_func</span><span class="p">(</span><span class="n">input_value</span><span class="p">):</span>
+
+    <span class="n">input_w</span> <span class="o">=</span> <span class="n">input_value</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">input_b</span> <span class="o">=</span> <span class="n">input_value</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    
+    <span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">dot</span><span class="p">(</span><span class="n">x_data</span><span class="p">,</span> <span class="n">input_w</span><span class="p">)</span> <span class="o">+</span> <span class="n">input_b</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="p">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="n">z</span><span class="p">))</span>
+    
+    <span class="n">delta</span> <span class="o">=</span> <span class="mf">1e-7</span>   <span class="c1"># 혹여나 y의 값이 1이 되는것을 방지하기 위해서
+</span>    
+    <span class="k">return</span> <span class="o">-</span><span class="n">np</span><span class="p">.</span><span class="nb">sum</span><span class="p">(</span> <span class="p">(</span><span class="n">t_data</span> <span class="o">*</span> <span class="n">np</span><span class="p">.</span><span class="n">log</span><span class="p">(</span><span class="n">y</span> <span class="o">+</span> <span class="n">delta</span><span class="p">))</span> <span class="o">+</span> <span class="p">((</span><span class="mi">1</span> <span class="o">-</span> <span class="n">t_data</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="p">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">y</span> <span class="o">+</span> <span class="n">delta</span><span class="p">))</span> <span class="p">)</span>
+    <span class="c1"># return 값은 cross entropy 
+</span>    
+<span class="c1"># learning rate 정의
+</span><span class="n">learning_rate</span> <span class="o">=</span> <span class="mf">1e-4</span>
+</pre></table></code></div></div><p>이제 설정은 다 끝났다! 반복학습 고고!</p><div lang="python" class="language-python highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre><td class="rouge-code"><pre><span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">300000</span><span class="p">):</span>
+    <span class="n">input_param</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">W</span><span class="p">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">b</span><span class="p">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># [w의 값, b의 값]
+</span>    <span class="n">result_derivative</span> <span class="o">=</span> <span class="n">learning_rate</span> <span class="o">*</span> <span class="n">numerical_derivative</span><span class="p">(</span><span class="n">loss_func</span><span class="p">,</span> <span class="n">input_param</span><span class="p">)</span>
+    
+    <span class="c1"># update W and b
+</span>    <span class="n">W</span> <span class="o">=</span> <span class="n">W</span> <span class="o">-</span> <span class="n">result_derivative</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">b</span> <span class="o">-</span> <span class="n">result_derivative</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    
+    <span class="k">if</span> <span class="n">step</span> <span class="o">%</span> <span class="mi">30000</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"loss: {}"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">loss_func</span><span class="p">(</span><span class="n">input_param</span><span class="p">)))</span>
+</pre></table></code></div></div><div lang="python" class="language-python highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre><td class="rouge-code"><pre><span class="n">결괏값</span><span class="p">:</span>
+<span class="n">loss값은</span> <span class="mf">37.363400822887364</span>
+<span class="n">loss값은</span> <span class="mf">2.8965998492103546</span>
+<span class="n">loss값은</span> <span class="mf">2.1229618648269253</span>
+<span class="n">loss값은</span> <span class="mf">1.7758889573534715</span>
+<span class="n">loss값은</span> <span class="mf">1.5682037282670798</span>
+<span class="n">loss값은</span> <span class="mf">1.4256076774651414</span>
+<span class="n">loss값은</span> <span class="mf">1.319509267965889</span>
+<span class="n">loss값은</span> <span class="mf">1.236302240833145</span>
+<span class="n">loss값은</span> <span class="mf">1.1685835845187729</span>
+<span class="n">loss값은</span> <span class="mf">1.1119343375856396</span>
+</pre></table></code></div></div><p>썩 낮은 loss 값은 아니다. 0에 그리 가깝지 않기 때문이다. 이런 결과가 도출된 까닭은 데이터 양이 매우 적기 때문일 확률이 크다.</p><p>아무튼 지금은 넘어가도록 하자.</p><p>이제 예측을 해보자.</p><div lang="python" class="language-python highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre><td class="rouge-code"><pre><span class="n">result</span> <span class="o">=</span> <span class="n">logistic_predict</span><span class="p">([[</span><span class="mi">13</span><span class="p">]])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="s">"""
+출력물:
+(1, array([[0.54444063]]))
+
+1은 시험에 합격을 예측했다는 것이다. 뒤에 온 실수 0.54444 는 시험에 합격할 확률을 나타낸다.
+"""</span>
+</pre></table></code></div></div><hr /><h2 id="2-scikit-learn으로-구현">2. SciKit Learn으로 구현</h2><p>지난번 포스팅을 보았다면 짐작하겠지만, <code class="language-plaintext highlighter-rouge">sklearn</code>으로 구현하는건 엄청 간단하고 편리하고 빠르다!</p><div lang="python" class="language-python highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre><td class="rouge-code"><pre><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">linear_model</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">linear_model</span><span class="p">.</span><span class="n">LogisticRegression</span><span class="p">()</span>   <span class="c1"># 로지스틱 회귀분석 모형 객체를 하나 만들어준다.
+</span>
+<span class="n">model</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_data</span><span class="p">,</span> <span class="n">t_data</span><span class="p">.</span><span class="n">ravel</span><span class="p">())</span>   <span class="c1"># sklearn에서 로지스틱을 할 땐 t_data를 1차원으로 풀어쓰자
+</span><span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">predict</span><span class="p">([[</span><span class="mi">13</span><span class="p">]])</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+<span class="n">result_proba</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">predict_proba</span><span class="p">([[</span><span class="mi">13</span><span class="p">]])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">result_proba</span><span class="p">)</span>
+</pre></table></code></div></div><div lang="python" class="language-python highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre><td class="rouge-code"><pre><span class="n">result</span> <span class="n">결과값</span><span class="p">:</span>   <span class="mi">0</span>      <span class="n">sklearn은</span> <span class="n">불합격하리라</span> <span class="n">예측했다</span><span class="p">.</span>
+<span class="n">result_proba</span> <span class="n">결과값</span><span class="p">:</span> <span class="p">[[</span><span class="mf">0.50009391</span> <span class="mf">0.49990609</span><span class="p">]]</span>
+  
+  <span class="mi">0</span><span class="n">일</span> <span class="n">확률이</span> <span class="n">약</span> <span class="mf">50.009</span> <span class="n">퍼센트</span>
+  <span class="mi">1</span><span class="n">일</span> <span class="n">확률이</span> <span class="n">약</span> <span class="mf">49.991</span> <span class="n">퍼센트이다</span><span class="p">.</span>
+</pre></table></code></div></div><p>도깨비 방망이로 뚝딱! 한 것처럼 엄청 빠르고 간결하게 결과가 나왔다.</p><p>텐서플로우는 어떨까?</p><hr /><h2 id="3-tensorflow로-구현">3. tensorflow로 구현</h2><div lang="python" class="language-python highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+</pre><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="n">tf</span>
+
+<span class="c1"># 데이터를 입력받기 위한 노드를 만들고 시작.
+</span><span class="n">X</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">placeholder</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">[</span><span class="bp">None</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">tf</span><span class="p">.</span><span class="n">flaot</span><span class="p">(</span><span class="mi">32</span><span class="p">))</span>
+<span class="n">T</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">placeholder</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">[</span><span class="bp">None</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">tf</span><span class="p">.</span><span class="nb">float</span><span class="p">(</span><span class="mi">32</span><span class="p">))</span>
+
+<span class="c1"># Weight and bias 설정
+</span><span class="n">W</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">normal</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]),</span> <span class="n">name</span><span class="o">=</span><span class="s">'weight'</span><span class="p">)</span>  <span class="c1"># 초기값을 랜덤하게 하나 받음
+</span><span class="n">b</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">normal</span><span class="p">([</span><span class="mi">1</span><span class="p">]),</span> <span class="n">name</span><span class="o">=</span><span class="s">'bias'</span><span class="p">)</span>  <span class="c1"># 초기값을 랜덤하게 하나 받음
+</span>
+<span class="c1"># hypothesis 설정
+</span><span class="n">logit</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">W</span><span class="p">)</span> <span class="o">+</span> <span class="n">b</span>  
+<span class="n">H</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">sigmoid</span><span class="p">(</span><span class="n">logit</span><span class="p">)</span>  <span class="c1"># tf는 sigmoid 함수를 직접 제공한다. 따라서 따로 수식을 잡아주지 않아도 된다.
+</span>
+<span class="c1"># loss function
+</span><span class="n">loss</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">reduce_mean</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">nn</span><span class="p">.</span><span class="n">sigmoid_cross_entropy_with_logits</span><span class="p">(</span><span class="n">logits</span><span class="o">=</span><span class="n">logit</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">T</span><span class="p">))</span>
+<span class="c1"># 마찬가지로 loss 함수에 대해서도 따로 cross entropy를 주는 메서드가 있다.
+</span>
+<span class="c1"># train node 설정
+</span><span class="n">train</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">train</span><span class="p">.</span><span class="n">GradientDescentOptimizer</span><span class="p">(</span><span class="n">learning_rate</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">).</span><span class="n">minimize</span><span class="p">(</span><span class="n">loss</span><span class="p">)</span>
+   <span class="c1"># w와 b를 최적화할건데, gradient descent를 이용해서 loss 값을 최소화할거다.
+# graph를 실행시켜줄 session이 필요.
+</span><span class="n">sess</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">Session</span><span class="p">()</span>
+<span class="n">sess</span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">global_variables_initializer</span><span class="p">())</span>   <span class="c1"># 그래프 실행전 반드시 해야하는 초기화
+</span>
+<span class="c1"># 반복학습 고고
+</span><span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">300000</span><span class="p">):</span>
+    <span class="n">tmp</span><span class="p">,</span> <span class="n">loss_val</span> <span class="o">=</span> <span class="n">sess</span><span class="p">.</span><span class="n">run</span><span class="p">([</span><span class="n">train</span><span class="p">,</span> <span class="n">loss</span><span class="p">],</span> <span class="n">feed_dict</span><span class="o">=</span><span class="p">{</span><span class="n">X</span><span class="p">:</span> <span class="n">x_data</span><span class="p">,</span> <span class="n">T</span><span class="p">:</span> <span class="n">t_data</span><span class="p">})</span>
+    
+    <span class="k">if</span> <span class="n">step</span> <span class="o">%</span> <span class="mi">30000</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"loss: {}"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">loss_val</span><span class="p">))</span>
+</pre></table></code></div></div><div lang="python" class="language-python highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre><td class="rouge-code"><pre><span class="n">결과값</span><span class="p">:</span>
+<span class="n">loss</span><span class="p">:</span> <span class="mf">5.002998352050781</span>
+<span class="n">loss</span><span class="p">:</span> <span class="mf">0.46201056241989136</span>
+<span class="n">loss</span><span class="p">:</span> <span class="mf">0.4189934730529785</span>
+<span class="n">loss</span><span class="p">:</span> <span class="mf">0.3852218985557556</span>
+<span class="n">loss</span><span class="p">:</span> <span class="mf">0.3580852746963501</span>
+<span class="n">loss</span><span class="p">:</span> <span class="mf">0.3357999920845032</span>
+<span class="n">loss</span><span class="p">:</span> <span class="mf">0.3171757757663727</span>
+<span class="n">loss</span><span class="p">:</span> <span class="mf">0.3013768792152405</span>
+<span class="n">loss</span><span class="p">:</span> <span class="mf">0.2877642512321472</span>
+<span class="n">loss</span><span class="p">:</span> <span class="mf">0.275882750749588</span>
+</pre></table></code></div></div><p>이렇게 쭉쭉 떨어지는 loss값을 볼수 있으리라. 다시한 번 말하지만, loss값이 결코 낮은게 아니다. 더 0에 가까워야한다.</p><p>높게 나온 이유는 뭐라고? 데이터 값이 터무니없이 적기 때문일것이다.</p><p>자 그럼 마지막으로 예측을 해보자</p><div lang="python" class="language-python highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre><td class="rouge-code"><pre><span class="n">result</span> <span class="o">=</span> <span class="n">sess</span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">feed_dict</span><span class="o">=</span><span class="p">{</span><span class="n">X</span><span class="p">:</span> <span class="mi">13</span><span class="p">})</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</pre></table></code></div></div><div lang="python" class="language-python highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre><span class="n">결과값</span><span class="p">:</span>
+<span class="p">[[</span><span class="mf">0.57707125</span><span class="p">]]</span>   <span class="o">==&gt;</span> <span class="n">합격</span><span class="err">!!!</span>
+</pre></table></code></div></div><p>이렇게 결과값이 도출되었다.</p><p>오늘 다룬 주제같은 경우에는 따로 데이터 값이 많지 않았기때문에 loss 값도 높게 나왔고, <code class="language-plaintext highlighter-rouge">sklearn</code>, <code class="language-plaintext highlighter-rouge">python</code>, 그리고 <code class="language-plaintext highlighter-rouge">tensorflow</code>간의 예측값이 크게 달랐다.</p><p>양질의 데이터를 갖고 있다면 분명 일치하는 결과가 나왔으리라 생각한다.</p><p>아무튼 오늘은 여기까지..</p><p>👋</p></div><div class="post-tail-wrapper text-muted"><div class="post-meta mb-3"> <i class="far fa-folder-open fa-fw mr-1"></i> <a href='/categories/python/'>python</a>, <a href='/categories/regression/'>regression</a></div><div class="post-tags"> <i class="fa fa-tags fa-fw mr-1"></i> <a href="/tags/python/" class="post-tag no-text-decoration" >python</a> <a href="/tags/regression/" class="post-tag no-text-decoration" >regression</a> <a href="/tags/%ED%9A%8C%EA%B7%80%EB%B6%84%EC%84%9D/" class="post-tag no-text-decoration" >회귀분석</a> <a href="/tags/ml/" class="post-tag no-text-decoration" >ML</a> <a href="/tags/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/" class="post-tag no-text-decoration" >머신러닝</a> <a href="/tags/tensorflow/" class="post-tag no-text-decoration" >tensorflow</a> <a href="/tags/%ED%85%90%EC%84%9C%ED%94%8C%EB%A1%9C%EC%9A%B0/" class="post-tag no-text-decoration" >텐서플로우</a> <a href="/tags/logistic/" class="post-tag no-text-decoration" >logistic</a> <a href="/tags/%EB%A1%9C%EC%A7%80%EC%8A%A4%ED%8B%B1/" class="post-tag no-text-decoration" >로지스틱</a></div><div class="post-tail-bottom d-flex justify-content-between align-items-center mt-3 pt-5 pb-2"><div class="license-wrapper"> This post is licensed under <a href="https://creativecommons.org/licenses/by/4.0/"> CC BY 4.0 </a> by the author.</div><div class="share-wrapper"> <span class="share-label text-muted mr-1">Share</span> <span class="share-icons"> <a href="https://twitter.com/intent/tweet?text=python으로 하는 머신러닝 로지스틱 회귀분석 - Big Ben's Log&url=https://rphabet.github.io//posts/python_logistic_reg_with_code/" data-toggle="tooltip" data-placement="top" title="Twitter" target="_blank" rel="noopener" aria-label="Twitter"> <i class="fa-fw fab fa-twitter"></i> </a> <a href="https://www.facebook.com/sharer/sharer.php?title=python으로 하는 머신러닝 로지스틱 회귀분석 - Big Ben's Log&u=https://rphabet.github.io//posts/python_logistic_reg_with_code/" data-toggle="tooltip" data-placement="top" title="Facebook" target="_blank" rel="noopener" aria-label="Facebook"> <i class="fa-fw fab fa-facebook-square"></i> </a> <a href="https://telegram.me/share?text=python으로 하는 머신러닝 로지스틱 회귀분석 - Big Ben's Log&url=https://rphabet.github.io//posts/python_logistic_reg_with_code/" data-toggle="tooltip" data-placement="top" title="Telegram" target="_blank" rel="noopener" aria-label="Telegram"> <i class="fa-fw fab fa-telegram"></i> </a> <i class="fa-fw fas fa-link small" onclick="copyLink('', 'Link copied successfully!')" data-toggle="tooltip" data-placement="top" title="Copy link"> </i> </span></div></div></div></div></div><div id="panel-wrapper" class="col-xl-3 pl-2 text-muted topbar-down"><div class="access"><div id="access-lastmod" class="post"> <span>Recent Update</span><ul class="post-content pl-0 pb-1 ml-1 mt-2"><li><a href="/posts/multinomial/">머신러닝 다중분류 로지스틱 작동 원리 Multinomial Classification</a><li><a href="/posts/2021-09-08-Logistic_cancer_example_tf/">python으로 하는 머신러닝 로지스틱 회귀분석 예제 (tensorflow version)</a><li><a href="/posts/Logistic_cancer_example/">python으로 하는 머신러닝 로지스틱 회귀분석 예제 (scikit learn version)</a><li><a href="/posts/TensorFlow_Fundamentals/">TensorFlow 기초</a><li><a href="/posts/TensorFlow_multiple_regression/">TensorFlow를 이용한 다중선형회귀분석</a></ul></div><div id="access-tags"> <span>Trending Tags</span><div class="d-flex flex-wrap mt-3 mb-1 mr-3"> <a class="post-tag" href="/tags/python/">python</a> <a class="post-tag" href="/tags/ml/">ML</a> <a class="post-tag" href="/tags/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/">머신러닝</a> <a class="post-tag" href="/tags/numpy/">numpy</a> <a class="post-tag" href="/tags/pandas/">pandas</a> <a class="post-tag" href="/tags/regression/">regression</a> <a class="post-tag" href="/tags/%ED%9A%8C%EA%B7%80%EB%B6%84%EC%84%9D/">회귀분석</a> <a class="post-tag" href="/tags/tensorflow/">tensorflow</a> <a class="post-tag" href="/tags/%ED%85%90%EC%84%9C%ED%94%8C%EB%A1%9C%EC%9A%B0/">텐서플로우</a> <a class="post-tag" href="/tags/logistic/">logistic</a></div></div></div><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@1.0.1/dist/bootstrap-toc.min.js"></script><div id="toc-wrapper" class="pl-0 pr-4 mb-5"> <span class="pl-3 pt-2 mb-2">Contents</span><nav id="toc" data-toggle="toc"></nav></div></div></div><div class="row"><div class="col-12 col-lg-11 col-xl-8"><div id="post-extend-wrapper" class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4"><div id="related-posts" class="mt-5 mb-2 mb-sm-4"><h3 class="pt-2 mt-1 mb-4 ml-1" data-toc-skip>Further Reading</h3><div class="card-deck mb-4"><div class="card"> <a href="/posts/Logistic_cancer_example/"><div class="card-body"> <span class="timeago small" >Sep 8<i class="unloaded">2021-09-08T17:41:00+09:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>python으로 하는 머신러닝 로지스틱 회귀분석 예제 (scikit learn version)</h3><div class="text-muted small"><p> sklearn을 이용한 Logistic Regression 예제 이번엔 위스콘신 대학에서 제공한 유방암 데이터셋을 이용하여 logistic을 구현해보자. tensorflow로도 나름(?) 손쉽게 구현할 수 있으나, 이번엔 sklearn이 제공하는 데이터부터 메서드까지 한번 사용해보고자 한다. sklearn의 k-fold cross valida...</p></div></div></a></div><div class="card"> <a href="/posts/TensorFlow_Fundamentals/"><div class="card-body"> <span class="timeago small" >Sep 3<i class="unloaded">2021-09-03T17:35:00+09:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>TensorFlow 기초</h3><div class="text-muted small"><p> TensorFlow 머신러닝을 직접 사용해본적 없지만, 인공지능에 조금이라도 관심이 있는 사람들이라면 머신러닝이란 키워드를 들었을 때 아마 tensorflow 또는 pyTorch 둘 중 하나를 가장 먼저 떠올리지 않을까 생각된다. 그만큼 너무 유명한 라이브러리이고 유명한만큼 유용한 라이브러리다. 텐서플로우(tensorflow)는 Google에...</p></div></div></a></div><div class="card"> <a href="/posts/TensorFlow_multiple_regression/"><div class="card-body"> <span class="timeago small" >Sep 3<i class="unloaded">2021-09-03T19:52:00+09:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>TensorFlow를 이용한 다중선형회귀분석</h3><div class="text-muted small"><p> Multiple Linear Regression Using TensorFlow 지난 포스팅에서 단일 변수를 갖고 sklearn 라이브러리와 기본 파이썬을 이용해서 선형회귀분석을 해보았다(링크). 이번 포스팅에선 독립 변수 두개를 더 추가해서 총 3개의 독립변수를 갖고 진행해보도록 하자. [\hat{y} = \beta_0 + \beta_1x_1...</p></div></div></a></div></div></div><div class="post-navigation d-flex justify-content-between"> <a href="/posts/python_logistic_regression/" class="btn btn-outline-primary" prompt="Older"><p>python으로 하는 머신러닝 로지스틱 회귀분석 개념</p></a> <a href="/posts/metric/" class="btn btn-outline-primary" prompt="Newer"><p>머신러닝 로지스틱 회귀분석 분류 성능 평가 지표 (metric)</p></a></div><div id="disqus" class="pt-2 pb-2"><p class="text-center text-muted small pb-5"> Comments powered by <a href="https://disqus.com/">Disqus</a>.</p></div><script src="/assets/js/lib/jquery.disqusloader.min.js"></script> <script> const options = { scriptUrl: '//rphabet-github-io.disqus.com/embed.js', disqusConfig: function() { this.page.title = 'python으로 하는 머신러닝 로지스틱 회귀분석'; this.page.url = 'https://rphabet.github.io//posts/python_logistic_reg_with_code/'; this.page.identifier = '/posts/python_logistic_reg_with_code/'; } }; $.disqusLoader('#disqus', options); </script></div></div></div><footer class="d-flex w-100 justify-content-center"><div class="d-flex justify-content-between align-items-center"><div class="footer-left"><p class="mb-0"> © 2021 <a href="https://twitter.com/username">Girim Ban</a>. <span data-toggle="tooltip" data-placement="top" title="Except where otherwise noted, the blog posts on this site are licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) License by the author.">Some rights reserved.</span></p></div><div class="footer-right"><p class="mb-0"> Powered by <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a> with <a href="https://github.com/cotes2020/jekyll-theme-chirpy" target="_blank" rel="noopener">Chirpy</a> theme.</p></div></div></footer></div><div id="search-result-wrapper" class="d-flex justify-content-center unloaded"><div class="col-12 col-sm-11 post-content"><div id="search-hints"><h4 class="text-muted mb-4">Trending Tags</h4><a class="post-tag" href="/tags/python/">python</a> <a class="post-tag" href="/tags/ml/">ML</a> <a class="post-tag" href="/tags/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/">머신러닝</a> <a class="post-tag" href="/tags/numpy/">numpy</a> <a class="post-tag" href="/tags/pandas/">pandas</a> <a class="post-tag" href="/tags/regression/">regression</a> <a class="post-tag" href="/tags/%ED%9A%8C%EA%B7%80%EB%B6%84%EC%84%9D/">회귀분석</a> <a class="post-tag" href="/tags/tensorflow/">tensorflow</a> <a class="post-tag" href="/tags/%ED%85%90%EC%84%9C%ED%94%8C%EB%A1%9C%EC%9A%B0/">텐서플로우</a> <a class="post-tag" href="/tags/logistic/">logistic</a></div><div id="search-results" class="d-flex flex-wrap justify-content-center text-muted mt-3"></div></div></div></div><div id="mask"></div><a id="back-to-top" href="#" aria-label="back-to-top" class="btn btn-lg btn-box-shadow" role="button"> <i class="fas fa-angle-up"></i> </a> <script src="https://cdn.jsdelivr.net/npm/simple-jekyll-search@1.7.3/dest/simple-jekyll-search.min.js"></script> <script> SimpleJekyllSearch({ searchInput: document.getElementById('search-input'), resultsContainer: document.getElementById('search-results'), json: '/assets/js/data/search.json', searchResultTemplate: '<div class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-lg-4 pr-lg-4 pl-xl-0 pr-xl-0"> <a href="https://rphabet.github.io/{url}">{title}</a><div class="post-meta d-flex flex-column flex-sm-row text-muted mt-1 mb-1"> {categories} {tags}</div><p>{snippet}</p></div>', noResultsText: '<p class="mt-5">Oops! No result founds.</p>', templateMiddleware: function(prop, value, template) { if (prop === 'categories') { if (value === '') { return `${value}`; } else { return `<div class="mr-sm-4"><i class="far fa-folder fa-fw"></i>${value}</div>`; } } if (prop === 'tags') { if (value === '') { return `${value}`; } else { return `<div><i class="fa fa-tag fa-fw"></i>${value}</div>`; } } } }); </script> <script src="https://cdn.jsdelivr.net/combine/npm/lozad/dist/lozad.min.js,npm/magnific-popup@1/dist/jquery.magnific-popup.min.js"></script> <script defer src="/assets/js/dist/post.min.js"></script> <script> /* see: <https://docs.mathjax.org/en/latest/options/input/tex.html#tex-options> */ MathJax = { tex: { inlineMath: [ /* start/end delimiter pairs for in-line math */ ['$','$'], ['\\(','\\)'] ], displayMath: [ /* start/end delimiter pairs for display math */ ['$$', '$$'], ['\\[', '\\]'] ] } }; </script> <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script> <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"> </script> <script src="https://cdn.jsdelivr.net/combine/npm/popper.js@1.16.1,npm/bootstrap@4/dist/js/bootstrap.min.js"></script> <script defer src="/app.js"></script> <script defer src="https://www.googletagmanager.com/gtag/js?id=G-8TH4RLJ51D"></script> <script> document.addEventListener("DOMContentLoaded", function(event) { window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-8TH4RLJ51D'); }); </script>

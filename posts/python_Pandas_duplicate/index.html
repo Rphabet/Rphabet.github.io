@@ -1,0 +1,169 @@
+<!DOCTYPE html><html lang="en" ><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta name="day-prompt" content="days ago"><meta name="hour-prompt" content="hours ago"><meta name="minute-prompt" content="minutes ago"><meta name="justnow-prompt" content="just now"><meta name="generator" content="Jekyll v4.2.0" /><meta property="og:title" content="python Pandas (12) DataFrame Duplicates 중복값 제거" /><meta property="og:locale" content="en" /><meta name="description" content="BigBen’s Log, BBlog" /><meta property="og:description" content="BigBen’s Log, BBlog" /><link rel="canonical" href="https://rphabet.github.io//posts/python_Pandas_duplicate/" /><meta property="og:url" content="https://rphabet.github.io//posts/python_Pandas_duplicate/" /><meta property="og:site_name" content="Big Ben’s Log" /><meta property="og:type" content="article" /><meta property="article:published_time" content="2021-08-24T17:27:00+09:00" /><meta name="twitter:card" content="summary" /><meta property="twitter:title" content="python Pandas (12) DataFrame Duplicates 중복값 제거" /><meta name="twitter:site" content="@twitter_username" /><meta name="google-site-verification" content="google_meta_tag_verification" /> <script type="application/ld+json"> {"description":"BigBen’s Log, BBlog","url":"https://rphabet.github.io//posts/python_Pandas_duplicate/","@type":"BlogPosting","headline":"python Pandas (12) DataFrame Duplicates 중복값 제거","dateModified":"2021-08-24T17:38:35+09:00","datePublished":"2021-08-24T17:27:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://rphabet.github.io//posts/python_Pandas_duplicate/"},"@context":"https://schema.org"}</script><title>python Pandas (12) DataFrame Duplicates 중복값 제거 | Big Ben's Log</title><link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicons/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicons/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicons/favicon-16x16.png"><link rel="manifest" href="/assets/img/favicons/site.webmanifest"><link rel="shortcut icon" href="/assets/img/favicons/favicon.ico"><meta name="apple-mobile-web-app-title" content="Big Ben's Log"><meta name="application-name" content="Big Ben's Log"><meta name="msapplication-TileColor" content="#da532c"><meta name="msapplication-config" content="/assets/img/favicons/browserconfig.xml"><meta name="theme-color" content="#ffffff"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"><link rel="dns-prefetch" href="https://fonts.gstatic.com"><link rel="preconnect" href="https://www.google-analytics.com" crossorigin="use-credentials"><link rel="dns-prefetch" href="https://www.google-analytics.com"><link rel="preconnect" href="https://www.googletagmanager.com" crossorigin="anonymous"><link rel="dns-prefetch" href="https://www.googletagmanager.com"><link rel="preconnect" href="https://cdn.jsdelivr.net"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.11.2/css/all.min.css"><link rel="stylesheet" href="/assets/css/style.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@1.0.1/dist/bootstrap-toc.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/magnific-popup@1.1.0/dist/magnific-popup.min.css"> <script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script><body data-spy="scroll" data-target="#toc"><div id="sidebar" class="d-flex flex-column align-items-end" lang="en"><div class="profile-wrapper text-center"><div id="avatar"> <a href="/" alt="avatar" class="mx-auto"> <img src="https://cdn.jsdelivr.net/gh/cotes2020/chirpy-images/commons/avatar.jpg" alt="avatar" onerror="this.style.display='none'"> </a></div><div class="site-title mt-3"> <a href="/">Big Ben's Log</a></div><div class="site-subtitle font-italic">Econometrics, Data, Economics in that order</div></div><ul class="w-100"><li class="nav-item"> <a href="/" class="nav-link"> <i class="fa-fw fas fa-home ml-xl-3 mr-xl-3 unloaded"></i> <span>HOME</span> </a><li class="nav-item"> <a href="/categories/" class="nav-link"> <i class="fa-fw fas fa-stream ml-xl-3 mr-xl-3 unloaded"></i> <span>CATEGORIES</span> </a><li class="nav-item"> <a href="/tags/" class="nav-link"> <i class="fa-fw fas fa-tags ml-xl-3 mr-xl-3 unloaded"></i> <span>TAGS</span> </a><li class="nav-item"> <a href="/archives/" class="nav-link"> <i class="fa-fw fas fa-archive ml-xl-3 mr-xl-3 unloaded"></i> <span>ARCHIVES</span> </a><li class="nav-item"> <a href="/about/" class="nav-link"> <i class="fa-fw fas fa-info ml-xl-3 mr-xl-3 unloaded"></i> <span>ABOUT</span> </a></ul><div class="sidebar-bottom mt-auto d-flex flex-wrap justify-content-center"> <a href="https://github.com/rphabet" aria-label="github" class="order-3" target="_blank" rel="noopener"> <i class="fab fa-github-alt"></i> </a> <a href="https://twitter.com/twitter_username" aria-label="twitter" class="order-4" target="_blank" rel="noopener"> <i class="fab fa-twitter"></i> </a> <a href=" javascript:location.href = 'mailto:' + ['bangirim','gmail.com'].join('@')" aria-label="email" class="order-5" > <i class="fas fa-envelope"></i> </a> <a href="/feed.xml" aria-label="rss" class="order-6" > <i class="fas fa-rss"></i> </a> <span class="icon-border order-2"></span> <span id="mode-toggle-wrapper" class="order-1"> <i class="mode-toggle fas fa-adjust"></i> <script type="text/javascript"> class ModeToggle { static get MODE_KEY() { return "mode"; } static get DARK_MODE() { return "dark"; } static get LIGHT_MODE() { return "light"; } constructor() { if (this.hasMode) { if (this.isDarkMode) { if (!this.isSysDarkPrefer) { this.setDark(); } } else { if (this.isSysDarkPrefer) { this.setLight(); } } } var self = this; /* always follow the system prefers */ this.sysDarkPrefers.addListener(function() { if (self.hasMode) { if (self.isDarkMode) { if (!self.isSysDarkPrefer) { self.setDark(); } } else { if (self.isSysDarkPrefer) { self.setLight(); } } self.clearMode(); } self.updateMermaid(); }); } /* constructor() */ setDark() { $('html').attr(ModeToggle.MODE_KEY, ModeToggle.DARK_MODE); sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.DARK_MODE); } setLight() { $('html').attr(ModeToggle.MODE_KEY, ModeToggle.LIGHT_MODE); sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.LIGHT_MODE); } clearMode() { $('html').removeAttr(ModeToggle.MODE_KEY); sessionStorage.removeItem(ModeToggle.MODE_KEY); } get sysDarkPrefers() { return window.matchMedia("(prefers-color-scheme: dark)"); } get isSysDarkPrefer() { return this.sysDarkPrefers.matches; } get isDarkMode() { return this.mode == ModeToggle.DARK_MODE; } get isLightMode() { return this.mode == ModeToggle.LIGHT_MODE; } get hasMode() { return this.mode != null; } get mode() { return sessionStorage.getItem(ModeToggle.MODE_KEY); } /* get the current mode on screen */ get modeStatus() { if (this.isDarkMode || (!this.hasMode && this.isSysDarkPrefer) ) { return ModeToggle.DARK_MODE; } else { return ModeToggle.LIGHT_MODE; } } updateMermaid() { if (typeof mermaid !== "undefined") { let expectedTheme = (this.modeStatus === ModeToggle.DARK_MODE? "dark" : "default"); let config = { theme: expectedTheme }; /* re-render the SVG › <https://github.com/mermaid-js/mermaid/issues/311#issuecomment-332557344> */ $(".mermaid").each(function() { let svgCode = $(this).prev().children().html(); $(this).removeAttr("data-processed"); $(this).html(svgCode); }); mermaid.initialize(config); mermaid.init(undefined, ".mermaid"); } } flipMode() { if (this.hasMode) { if (this.isSysDarkPrefer) { if (this.isLightMode) { this.clearMode(); } else { this.setLight(); } } else { if (this.isDarkMode) { this.clearMode(); } else { this.setDark(); } } } else { if (this.isSysDarkPrefer) { this.setLight(); } else { this.setDark(); } } this.updateMermaid(); } /* flipMode() */ } /* ModeToggle */ let toggle = new ModeToggle(); $(".mode-toggle").click(function() { toggle.flipMode(); }); </script> </span></div></div><div id="topbar-wrapper" class="row justify-content-center topbar-down"><div id="topbar" class="col-11 d-flex h-100 align-items-center justify-content-between"> <span id="breadcrumb"> <span> <a href="/"> Home </a> </span> <span>python Pandas (12) DataFrame Duplicates 중복값 제거</span> </span> <i id="sidebar-trigger" class="fas fa-bars fa-fw"></i><div id="topbar-title"> Post</div><i id="search-trigger" class="fas fa-search fa-fw"></i> <span id="search-wrapper" class="align-items-center"> <i class="fas fa-search fa-fw"></i> <input class="form-control" id="search-input" type="search" aria-label="search" autocomplete="off" placeholder="Search..."> <i class="fa fa-times-circle fa-fw" id="search-cleaner"></i> </span> <span id="search-cancel" >Cancel</span></div></div><div id="main-wrapper"><div id="main"><div class="row"><div id="post-wrapper" class="col-12 col-lg-11 col-xl-8"><div class="post pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4"><h1 data-toc-skip>python Pandas (12) DataFrame Duplicates 중복값 제거</h1><div class="post-meta text-muted d-flex flex-column"><div> <span class="semi-bold"> Girim Ban </span> on <span class="timeago " data-toggle="tooltip" data-placement="bottom" title="Tue, Aug 24, 2021, 5:27 PM +0900" >Aug 24<i class="unloaded">2021-08-24T17:27:00+09:00</i> </span></div><div> <span> Updated <span class="timeago lastmod" data-toggle="tooltip" data-placement="bottom" title="Tue, Aug 24, 2021, 5:38 PM +0900" >Aug 24<i class="unloaded">2021-08-24T17:38:35+09:00</i> </span> </span> <span class="readtime" data-toggle="tooltip" data-placement="bottom" title="1054 words">5 min read</span></div></div><div class="post-content"> <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 200'%3E%3C/svg%3E" data-proofer-ignore data-src="/../assets/images/pandas/logo.png" class="preview-img" alt="numpy logo" width="500" height="200"><hr /><h2 id="중복-값-handling">중복 값 handling</h2><p>데이터를 다루면서 평균을 구하다보면 집계함수를 칼럼에 넣기 위해 중복된 값을 지워야하는 순간이 있다.</p><p>그때를 위한 함수가 몇가지 있다.</p><p>바로 예제를 보자.</p><div lang="python" class="language-python highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+</pre><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s">'k1'</span><span class="p">:</span> <span class="p">[</span><span class="s">'one'</span><span class="p">]</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">+</span> <span class="p">[</span><span class="s">'two'</span><span class="p">]</span> <span class="o">*</span> <span class="mi">4</span><span class="p">,</span>  <span class="c1"># 파이썬의 리스트에 더하기 의미는 리스트를 붙이란 소리임
+</span>    <span class="s">'k2'</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="p">})</span> 
+
+<span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="s">"""
+   k1   k2
+0  one  1
+1  one  1
+2  one  2
+3  two  3
+4  two  3
+5  two  4
+6  two  4
+"""</span>
+</pre></table></code></div></div><p>보다시피 중복된 행이 많이 등장한다.</p><p>이럴 경우 어떻게 처리할까?</p><p>또 언제 중복된 행을 배제해야하는가?</p><p>우선 중복여부를 확인하기 위해 <code class="language-plaintext highlighter-rouge">.duplicated()</code> 메서드를 호출하자.</p><div lang="python" class="language-python highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre><td class="rouge-code"><pre><span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="p">.</span><span class="n">duplicated</span><span class="p">())</span>
+<span class="s">"""
+0    False
+1     True
+2    False
+3    False
+4     True
+5    False
+6     True
+dtype: bool
+"""</span>
+</pre></table></code></div></div><hr /><p><code class="language-plaintext highlighter-rouge">.duplicated()</code>의 로직</p><p>​ k1 k2 0 one 1 중복됏나요? ==&gt; 아니요 처음이에요 1 one 1 중복됐나요? ==&gt; 네 <strong>중복됐어요</strong> 2 one 2 중복됐나요? ==&gt; 아니오 3 two 3 중복됐나요? ==&gt; 아니오 4 two 3 중복됐나요? ==&gt; 네 <strong>중복됐어요</strong> 5 two 4 중복됐나요? ==&gt; 아니오 6 two 4 중복됐나요? ==&gt; 네 <strong>중복됐어요</strong></p><hr /><p>보다시피 <code class="language-plaintext highlighter-rouge">k1</code>과 <code class="language-plaintext highlighter-rouge">k2</code>의 값이 모두 같은 값으로 두번 이상 나오는 경우 중복된 부분에 있어 <code class="language-plaintext highlighter-rouge">bool</code>값으로 반환해서 알려준다</p><p>어떻게 활용할까? <code class="language-plaintext highlighter-rouge">boolean mask</code>로 활용하면 좋을거 같다.</p><div lang="python" class="language-python highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre><td class="rouge-code"><pre><span class="c1"># 중복된 행만 추출
+</span><span class="n">df</span><span class="p">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">.</span><span class="n">duplicated</span><span class="p">(),</span> <span class="p">:]</span>   <span class="c1"># 중복된 친구만 뽑았음.
+</span>
+<span class="s">"""
+  k1   k2
+1 one  1
+4 two  3
+6 two  4
+"""</span>
+</pre></table></code></div></div><h3 id="중복행-삭제">중복행 삭제</h3><p>그렇다면 중복된 행은 어떻게 삭제할까?</p><p>물론 <code class="language-plaintext highlighter-rouge">boolean mask</code>를 통해 중복되지 않은 행만 추출하여 새롭게 <code class="language-plaintext highlighter-rouge">df</code>을 만들어줘도 무방하다. 하지만 그것보다 더 간편한, 따로 <code class="language-plaintext highlighter-rouge">boolean mask</code>를 사용하지 않아도 되는 함수를 제공해준다. <code class="language-plaintext highlighter-rouge">.drop_duplicates()</code></p><div lang="python" class="language-python highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre><td class="rouge-code"><pre><span class="n">df2</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df2</span><span class="p">)</span>
+<span class="s">"""
+  k1   k2
+0 one   1
+2 one   2
+3 two   3
+5 two   4
+"""</span>
+</pre></table></code></div></div><p>이렇게 간단하게 나타낼 수 있다.</p><p>음.. 이번엔 조금 문제를 복잡하게 만들어보자.</p><p>새로운 <code class="language-plaintext highlighter-rouge">column</code> <code class="language-plaintext highlighter-rouge">k3</code>를 추가해보자.</p><div lang="python" class="language-python highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+</pre><td class="rouge-code"><pre><span class="n">df</span><span class="p">[</span><span class="s">'k3'</span><span class="p">]</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>   <span class="c1"># k3의 값은 0부터 6까지임
+</span><span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="s">"""
+   k1   k2   k3
+0  one  1    0
+1  one  1    1
+2  one  2    2
+3  two  3    3
+4  two  3    4
+5  two  4    5
+6  two  4    6
+"""</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="p">.</span><span class="n">drop_duplicates</span><span class="p">())</span> 
+<span class="c1"># 전체적으로 중복된 행이 없음
+# (중복의 기준 한 행의 k1, k2, k3에 대한 값이 그대로 동일하게 다른 행에도 있어야함)
+# 당연히 드랍시켜도 원본 그대로임
+</span>
+</pre></table></code></div></div><p>하지만 많은 경우에서 우리는 하나의 <code class="language-plaintext highlighter-rouge">column</code>에 중복된 값을 제거하길 원한다.</p><p>그럴땐 어떻게 하는가?</p><div lang="python" class="language-python highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+</pre><td class="rouge-code"><pre><span class="c1"># 컬럼 하나에 대해서 중복항을 제거하라! 라는 명령어를 알아보자
+</span><span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="p">.</span><span class="n">drop_duplicates</span><span class="p">([</span><span class="s">'k1'</span><span class="p">]))</span> <span class="c1"># 이렇게 인자에 [컬럼명]을 사용해주면 됨.
+</span><span class="s">"""
+   k1  k2  k3
+0 one  1   0
+3 two  3   3
+"""</span>
+<span class="c1"># 이렇게 k1의 값이 중복된 행을 제거해서 나타낸다.
+</span>
+<span class="c1"># 이번엔 k1과 k2를 같이 써보자
+</span><span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="p">.</span><span class="n">drop_duplicates</span><span class="p">([</span><span class="s">'k1'</span><span class="p">,</span> <span class="s">'k2'</span><span class="p">]))</span>  <span class="c1"># k1과 k2를 고려했을 때 중복되는 것 제거
+</span><span class="s">"""
+   k1   k2  k3
+0 one   1   0
+2 one   2   2
+3 two   3   3
+5 two   4   5
+"""</span>
+<span class="c1"># 이렇게 k1과 k2의 값이 동일한 행만 제거한 뒤 dataframe을 보여준다.
+</span></pre></table></code></div></div><p>이 외에도 <code class="language-plaintext highlighter-rouge">unique()</code>와 같은 함수를 통해 직, 간접적으로 중복값을 제어할 수 있는 방법은 있다.</p><p>일단은 여기까지.</p><p>끄읏. 👋</p></div><div class="post-tail-wrapper text-muted"><div class="post-meta mb-3"> <i class="far fa-folder-open fa-fw mr-1"></i> <a href='/categories/python/'>python</a>, <a href='/categories/pandas/'>pandas</a></div><div class="post-tags"> <i class="fa fa-tags fa-fw mr-1"></i> <a href="/tags/python/" class="post-tag no-text-decoration" >python</a> <a href="/tags/numpy/" class="post-tag no-text-decoration" >numpy</a> <a href="/tags/pandas/" class="post-tag no-text-decoration" >pandas</a> <a href="/tags/drop-duplicates/" class="post-tag no-text-decoration" >drop_duplicates</a> <a href="/tags/duplicates/" class="post-tag no-text-decoration" >duplicates</a></div><div class="post-tail-bottom d-flex justify-content-between align-items-center mt-3 pt-5 pb-2"><div class="license-wrapper"> This post is licensed under <a href="https://creativecommons.org/licenses/by/4.0/"> CC BY 4.0 </a> by the author.</div><div class="share-wrapper"> <span class="share-label text-muted mr-1">Share</span> <span class="share-icons"> <a href="https://twitter.com/intent/tweet?text=python Pandas (12) DataFrame Duplicates 중복값 제거 - Big Ben's Log&url=https://rphabet.github.io//posts/python_Pandas_duplicate/" data-toggle="tooltip" data-placement="top" title="Twitter" target="_blank" rel="noopener" aria-label="Twitter"> <i class="fa-fw fab fa-twitter"></i> </a> <a href="https://www.facebook.com/sharer/sharer.php?title=python Pandas (12) DataFrame Duplicates 중복값 제거 - Big Ben's Log&u=https://rphabet.github.io//posts/python_Pandas_duplicate/" data-toggle="tooltip" data-placement="top" title="Facebook" target="_blank" rel="noopener" aria-label="Facebook"> <i class="fa-fw fab fa-facebook-square"></i> </a> <a href="https://telegram.me/share?text=python Pandas (12) DataFrame Duplicates 중복값 제거 - Big Ben's Log&url=https://rphabet.github.io//posts/python_Pandas_duplicate/" data-toggle="tooltip" data-placement="top" title="Telegram" target="_blank" rel="noopener" aria-label="Telegram"> <i class="fa-fw fab fa-telegram"></i> </a> <i class="fa-fw fas fa-link small" onclick="copyLink('', 'Link copied successfully!')" data-toggle="tooltip" data-placement="top" title="Copy link"> </i> </span></div></div></div></div></div><div id="panel-wrapper" class="col-xl-3 pl-2 text-muted topbar-down"><div class="access"><div id="access-lastmod" class="post"> <span>Recent Update</span><ul class="post-content pl-0 pb-1 ml-1 mt-2"><li><a href="/posts/multinomial/">머신러닝 다중분류 로지스틱 작동 원리 Multinomial Classification</a><li><a href="/posts/2021-09-08-Logistic_cancer_example_tf/">python으로 하는 머신러닝 로지스틱 회귀분석 예제 (tensorflow version)</a><li><a href="/posts/Logistic_cancer_example/">python으로 하는 머신러닝 로지스틱 회귀분석 예제 (scikit learn version)</a><li><a href="/posts/TensorFlow_Fundamentals/">TensorFlow 기초</a><li><a href="/posts/TensorFlow_multiple_regression/">TensorFlow를 이용한 다중선형회귀분석</a></ul></div><div id="access-tags"> <span>Trending Tags</span><div class="d-flex flex-wrap mt-3 mb-1 mr-3"> <a class="post-tag" href="/tags/python/">python</a> <a class="post-tag" href="/tags/ml/">ML</a> <a class="post-tag" href="/tags/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/">머신러닝</a> <a class="post-tag" href="/tags/numpy/">numpy</a> <a class="post-tag" href="/tags/pandas/">pandas</a> <a class="post-tag" href="/tags/regression/">regression</a> <a class="post-tag" href="/tags/%ED%9A%8C%EA%B7%80%EB%B6%84%EC%84%9D/">회귀분석</a> <a class="post-tag" href="/tags/tensorflow/">tensorflow</a> <a class="post-tag" href="/tags/%ED%85%90%EC%84%9C%ED%94%8C%EB%A1%9C%EC%9A%B0/">텐서플로우</a> <a class="post-tag" href="/tags/logistic/">logistic</a></div></div></div><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@1.0.1/dist/bootstrap-toc.min.js"></script><div id="toc-wrapper" class="pl-0 pr-4 mb-5"> <span class="pl-3 pt-2 mb-2">Contents</span><nav id="toc" data-toggle="toc"></nav></div></div></div><div class="row"><div class="col-12 col-lg-11 col-xl-8"><div id="post-extend-wrapper" class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4"><div id="related-posts" class="mt-5 mb-2 mb-sm-4"><h3 class="pt-2 mt-1 mb-4 ml-1" data-toc-skip>Further Reading</h3><div class="card-deck mb-4"><div class="card"> <a href="/posts/python_Pandas/"><div class="card-body"> <span class="timeago small" >Aug 20<i class="unloaded">2021-08-20T14:00:00+09:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>python Panda (1) 데이터프레임으로 데이터 가져오기</h3><div class="text-muted small"><p> pandas 🐼 이 글을 읽고 있는 당신이 데이터와 연관된 직업에 종사하길 원한다면 그 어떤 직업군보다도 pandas와 친해야하며, 능숙해야하며, 그리고 이것이 세상과 소통하는 하나의 매개체가 되어야한다. 파이썬의 라이브러리중에 가장 완성도 높고 훌륭한 라이브러리로 매년 꼽혀오는 pandas 이다. 우선 NumPy를 모른다면 pandas를 ...</p></div></div></a></div><div class="card"> <a href="/posts/python_Pandas_2/"><div class="card-body"> <span class="timeago small" >Aug 20<i class="unloaded">2021-08-20T17:00:00+09:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>python Pandas (2) open API 데이터가져와서 데이터프레임으로 불러오기</h3><div class="text-muted small"><p> 음.. 사실 pandas를 정리해보면서 든 생각중 하나는 DataFrame의 세계나 활용도가 너무 광범위해서 하나를 설명할 때 데이터를 불러오는 방법에 대해서 순서에 맞게끔 단계별로 기록하는게 정말 힘들다. 그냥 pandas 함수나 좀 기록하세욧!! 뭐 사실 이렇게 하는것도 하나의 방법이 될 수 있다고 생각하지만, 이해를 해가며 공부하기에는 적...</p></div></div></a></div><div class="card"> <a href="/posts/python_Pandas_3/"><div class="card-body"> <span class="timeago small" >Aug 21<i class="unloaded">2021-08-21T17:15:00+09:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>python Pandas (3) 데이터프레임 조작하기</h3><div class="text-muted small"><p> 🐼 DataFrame 인덱스와 칼럼명 제어 pandas 세 번째 포스팅이다. 지난번 포스팅과는 다르게 이번에는 간단한 데이터를 하나 만들어서 어떤식으로 column을 추가하고 삭제하고 변경하고 마찬가지로 index를 효과적으로 조작할 수 있는지 한번 알아보자. import numpy as np import pandas as pd data...</p></div></div></a></div></div></div><div class="post-navigation d-flex justify-content-between"> <a href="/posts/python_Pandas_groupby/" class="btn btn-outline-primary" prompt="Older"><p>python Pandas (11) DataFrame Grouping</p></a> <a href="/posts/numerical_differentiation/" class="btn btn-outline-primary" prompt="Newer"><p>python으로 하는 수치미분 (Numerical Differentiation)</p></a></div><div id="disqus" class="pt-2 pb-2"><p class="text-center text-muted small pb-5"> Comments powered by <a href="https://disqus.com/">Disqus</a>.</p></div><script src="/assets/js/lib/jquery.disqusloader.min.js"></script> <script> const options = { scriptUrl: '//rphabet-github-io.disqus.com/embed.js', disqusConfig: function() { this.page.title = 'python Pandas (12) DataFrame Duplicates 중복값 제거'; this.page.url = 'https://rphabet.github.io//posts/python_Pandas_duplicate/'; this.page.identifier = '/posts/python_Pandas_duplicate/'; } }; $.disqusLoader('#disqus', options); </script></div></div></div><footer class="d-flex w-100 justify-content-center"><div class="d-flex justify-content-between align-items-center"><div class="footer-left"><p class="mb-0"> © 2021 <a href="https://twitter.com/username">Girim Ban</a>. <span data-toggle="tooltip" data-placement="top" title="Except where otherwise noted, the blog posts on this site are licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) License by the author.">Some rights reserved.</span></p></div><div class="footer-right"><p class="mb-0"> Powered by <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a> with <a href="https://github.com/cotes2020/jekyll-theme-chirpy" target="_blank" rel="noopener">Chirpy</a> theme.</p></div></div></footer></div><div id="search-result-wrapper" class="d-flex justify-content-center unloaded"><div class="col-12 col-sm-11 post-content"><div id="search-hints"><h4 class="text-muted mb-4">Trending Tags</h4><a class="post-tag" href="/tags/python/">python</a> <a class="post-tag" href="/tags/ml/">ML</a> <a class="post-tag" href="/tags/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/">머신러닝</a> <a class="post-tag" href="/tags/numpy/">numpy</a> <a class="post-tag" href="/tags/pandas/">pandas</a> <a class="post-tag" href="/tags/regression/">regression</a> <a class="post-tag" href="/tags/%ED%9A%8C%EA%B7%80%EB%B6%84%EC%84%9D/">회귀분석</a> <a class="post-tag" href="/tags/tensorflow/">tensorflow</a> <a class="post-tag" href="/tags/%ED%85%90%EC%84%9C%ED%94%8C%EB%A1%9C%EC%9A%B0/">텐서플로우</a> <a class="post-tag" href="/tags/logistic/">logistic</a></div><div id="search-results" class="d-flex flex-wrap justify-content-center text-muted mt-3"></div></div></div></div><div id="mask"></div><a id="back-to-top" href="#" aria-label="back-to-top" class="btn btn-lg btn-box-shadow" role="button"> <i class="fas fa-angle-up"></i> </a> <script src="https://cdn.jsdelivr.net/npm/simple-jekyll-search@1.7.3/dest/simple-jekyll-search.min.js"></script> <script> SimpleJekyllSearch({ searchInput: document.getElementById('search-input'), resultsContainer: document.getElementById('search-results'), json: '/assets/js/data/search.json', searchResultTemplate: '<div class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-lg-4 pr-lg-4 pl-xl-0 pr-xl-0"> <a href="https://rphabet.github.io/{url}">{title}</a><div class="post-meta d-flex flex-column flex-sm-row text-muted mt-1 mb-1"> {categories} {tags}</div><p>{snippet}</p></div>', noResultsText: '<p class="mt-5">Oops! No result founds.</p>', templateMiddleware: function(prop, value, template) { if (prop === 'categories') { if (value === '') { return `${value}`; } else { return `<div class="mr-sm-4"><i class="far fa-folder fa-fw"></i>${value}</div>`; } } if (prop === 'tags') { if (value === '') { return `${value}`; } else { return `<div><i class="fa fa-tag fa-fw"></i>${value}</div>`; } } } }); </script> <script src="https://cdn.jsdelivr.net/combine/npm/lozad/dist/lozad.min.js,npm/magnific-popup@1/dist/jquery.magnific-popup.min.js"></script> <script defer src="/assets/js/dist/post.min.js"></script> <script> /* see: <https://docs.mathjax.org/en/latest/options/input/tex.html#tex-options> */ MathJax = { tex: { inlineMath: [ /* start/end delimiter pairs for in-line math */ ['$','$'], ['\\(','\\)'] ], displayMath: [ /* start/end delimiter pairs for display math */ ['$$', '$$'], ['\\[', '\\]'] ] } }; </script> <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script> <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"> </script> <script src="https://cdn.jsdelivr.net/combine/npm/popper.js@1.16.1,npm/bootstrap@4/dist/js/bootstrap.min.js"></script> <script defer src="/app.js"></script> <script defer src="https://www.googletagmanager.com/gtag/js?id=G-8TH4RLJ51D"></script> <script> document.addEventListener("DOMContentLoaded", function(event) { window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-8TH4RLJ51D'); }); </script>

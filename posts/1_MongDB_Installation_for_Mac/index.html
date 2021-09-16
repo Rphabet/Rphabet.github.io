@@ -1,0 +1,227 @@
+<!DOCTYPE html><html lang="en" ><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta name="day-prompt" content="days ago"><meta name="hour-prompt" content="hours ago"><meta name="minute-prompt" content="minutes ago"><meta name="justnow-prompt" content="just now"><meta name="generator" content="Jekyll v4.2.0" /><meta property="og:title" content="MongoDB MAC OS 설치부터 실행까지" /><meta property="og:locale" content="en" /><meta name="description" content="BigBen’s Log, BBlog" /><meta property="og:description" content="BigBen’s Log, BBlog" /><link rel="canonical" href="https://rphabet.github.io//posts/1_MongDB_Installation_for_Mac/" /><meta property="og:url" content="https://rphabet.github.io//posts/1_MongDB_Installation_for_Mac/" /><meta property="og:site_name" content="Big Ben’s Log" /><meta property="og:type" content="article" /><meta property="article:published_time" content="2021-08-14T23:00:00+09:00" /><meta name="twitter:card" content="summary" /><meta property="twitter:title" content="MongoDB MAC OS 설치부터 실행까지" /><meta name="twitter:site" content="@twitter_username" /><meta name="google-site-verification" content="google_meta_tag_verification" /> <script type="application/ld+json"> {"description":"BigBen’s Log, BBlog","url":"https://rphabet.github.io//posts/1_MongDB_Installation_for_Mac/","@type":"BlogPosting","headline":"MongoDB MAC OS 설치부터 실행까지","dateModified":"2021-08-16T21:49:49+09:00","datePublished":"2021-08-14T23:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://rphabet.github.io//posts/1_MongDB_Installation_for_Mac/"},"@context":"https://schema.org"}</script><title>MongoDB MAC OS 설치부터 실행까지 | Big Ben's Log</title><link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicons/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicons/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicons/favicon-16x16.png"><link rel="manifest" href="/assets/img/favicons/site.webmanifest"><link rel="shortcut icon" href="/assets/img/favicons/favicon.ico"><meta name="apple-mobile-web-app-title" content="Big Ben's Log"><meta name="application-name" content="Big Ben's Log"><meta name="msapplication-TileColor" content="#da532c"><meta name="msapplication-config" content="/assets/img/favicons/browserconfig.xml"><meta name="theme-color" content="#ffffff"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"><link rel="dns-prefetch" href="https://fonts.gstatic.com"><link rel="preconnect" href="https://www.google-analytics.com" crossorigin="use-credentials"><link rel="dns-prefetch" href="https://www.google-analytics.com"><link rel="preconnect" href="https://www.googletagmanager.com" crossorigin="anonymous"><link rel="dns-prefetch" href="https://www.googletagmanager.com"><link rel="preconnect" href="https://cdn.jsdelivr.net"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.11.2/css/all.min.css"><link rel="stylesheet" href="/assets/css/style.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@1.0.1/dist/bootstrap-toc.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/magnific-popup@1.1.0/dist/magnific-popup.min.css"> <script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script><body data-spy="scroll" data-target="#toc"><div id="sidebar" class="d-flex flex-column align-items-end" lang="en"><div class="profile-wrapper text-center"><div id="avatar"> <a href="/" alt="avatar" class="mx-auto"> <img src="https://cdn.jsdelivr.net/gh/cotes2020/chirpy-images/commons/avatar.jpg" alt="avatar" onerror="this.style.display='none'"> </a></div><div class="site-title mt-3"> <a href="/">Big Ben's Log</a></div><div class="site-subtitle font-italic">Econometrics, Data, Economics in that order</div></div><ul class="w-100"><li class="nav-item"> <a href="/" class="nav-link"> <i class="fa-fw fas fa-home ml-xl-3 mr-xl-3 unloaded"></i> <span>HOME</span> </a><li class="nav-item"> <a href="/categories/" class="nav-link"> <i class="fa-fw fas fa-stream ml-xl-3 mr-xl-3 unloaded"></i> <span>CATEGORIES</span> </a><li class="nav-item"> <a href="/tags/" class="nav-link"> <i class="fa-fw fas fa-tags ml-xl-3 mr-xl-3 unloaded"></i> <span>TAGS</span> </a><li class="nav-item"> <a href="/archives/" class="nav-link"> <i class="fa-fw fas fa-archive ml-xl-3 mr-xl-3 unloaded"></i> <span>ARCHIVES</span> </a><li class="nav-item"> <a href="/about/" class="nav-link"> <i class="fa-fw fas fa-info ml-xl-3 mr-xl-3 unloaded"></i> <span>ABOUT</span> </a></ul><div class="sidebar-bottom mt-auto d-flex flex-wrap justify-content-center"> <a href="https://github.com/rphabet" aria-label="github" class="order-3" target="_blank" rel="noopener"> <i class="fab fa-github-alt"></i> </a> <a href="https://twitter.com/twitter_username" aria-label="twitter" class="order-4" target="_blank" rel="noopener"> <i class="fab fa-twitter"></i> </a> <a href=" javascript:location.href = 'mailto:' + ['bangirim','gmail.com'].join('@')" aria-label="email" class="order-5" > <i class="fas fa-envelope"></i> </a> <a href="/feed.xml" aria-label="rss" class="order-6" > <i class="fas fa-rss"></i> </a> <span class="icon-border order-2"></span> <span id="mode-toggle-wrapper" class="order-1"> <i class="mode-toggle fas fa-adjust"></i> <script type="text/javascript"> class ModeToggle { static get MODE_KEY() { return "mode"; } static get DARK_MODE() { return "dark"; } static get LIGHT_MODE() { return "light"; } constructor() { if (this.hasMode) { if (this.isDarkMode) { if (!this.isSysDarkPrefer) { this.setDark(); } } else { if (this.isSysDarkPrefer) { this.setLight(); } } } var self = this; /* always follow the system prefers */ this.sysDarkPrefers.addListener(function() { if (self.hasMode) { if (self.isDarkMode) { if (!self.isSysDarkPrefer) { self.setDark(); } } else { if (self.isSysDarkPrefer) { self.setLight(); } } self.clearMode(); } self.updateMermaid(); }); } /* constructor() */ setDark() { $('html').attr(ModeToggle.MODE_KEY, ModeToggle.DARK_MODE); sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.DARK_MODE); } setLight() { $('html').attr(ModeToggle.MODE_KEY, ModeToggle.LIGHT_MODE); sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.LIGHT_MODE); } clearMode() { $('html').removeAttr(ModeToggle.MODE_KEY); sessionStorage.removeItem(ModeToggle.MODE_KEY); } get sysDarkPrefers() { return window.matchMedia("(prefers-color-scheme: dark)"); } get isSysDarkPrefer() { return this.sysDarkPrefers.matches; } get isDarkMode() { return this.mode == ModeToggle.DARK_MODE; } get isLightMode() { return this.mode == ModeToggle.LIGHT_MODE; } get hasMode() { return this.mode != null; } get mode() { return sessionStorage.getItem(ModeToggle.MODE_KEY); } /* get the current mode on screen */ get modeStatus() { if (this.isDarkMode || (!this.hasMode && this.isSysDarkPrefer) ) { return ModeToggle.DARK_MODE; } else { return ModeToggle.LIGHT_MODE; } } updateMermaid() { if (typeof mermaid !== "undefined") { let expectedTheme = (this.modeStatus === ModeToggle.DARK_MODE? "dark" : "default"); let config = { theme: expectedTheme }; /* re-render the SVG › <https://github.com/mermaid-js/mermaid/issues/311#issuecomment-332557344> */ $(".mermaid").each(function() { let svgCode = $(this).prev().children().html(); $(this).removeAttr("data-processed"); $(this).html(svgCode); }); mermaid.initialize(config); mermaid.init(undefined, ".mermaid"); } } flipMode() { if (this.hasMode) { if (this.isSysDarkPrefer) { if (this.isLightMode) { this.clearMode(); } else { this.setLight(); } } else { if (this.isDarkMode) { this.clearMode(); } else { this.setDark(); } } } else { if (this.isSysDarkPrefer) { this.setLight(); } else { this.setDark(); } } this.updateMermaid(); } /* flipMode() */ } /* ModeToggle */ let toggle = new ModeToggle(); $(".mode-toggle").click(function() { toggle.flipMode(); }); </script> </span></div></div><div id="topbar-wrapper" class="row justify-content-center topbar-down"><div id="topbar" class="col-11 d-flex h-100 align-items-center justify-content-between"> <span id="breadcrumb"> <span> <a href="/"> Home </a> </span> <span>MongoDB MAC OS 설치부터 실행까지</span> </span> <i id="sidebar-trigger" class="fas fa-bars fa-fw"></i><div id="topbar-title"> Post</div><i id="search-trigger" class="fas fa-search fa-fw"></i> <span id="search-wrapper" class="align-items-center"> <i class="fas fa-search fa-fw"></i> <input class="form-control" id="search-input" type="search" aria-label="search" autocomplete="off" placeholder="Search..."> <i class="fa fa-times-circle fa-fw" id="search-cleaner"></i> </span> <span id="search-cancel" >Cancel</span></div></div><div id="main-wrapper"><div id="main"><div class="row"><div id="post-wrapper" class="col-12 col-lg-11 col-xl-8"><div class="post pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4"><h1 data-toc-skip>MongoDB MAC OS 설치부터 실행까지</h1><div class="post-meta text-muted d-flex flex-column"><div> <span class="semi-bold"> Girim Ban </span> on <span class="timeago " data-toggle="tooltip" data-placement="bottom" title="Sat, Aug 14, 2021, 11:00 PM +0900" >Aug 14<i class="unloaded">2021-08-14T23:00:00+09:00</i> </span></div><div> <span> Updated <span class="timeago lastmod" data-toggle="tooltip" data-placement="bottom" title="Mon, Aug 16, 2021, 9:49 PM +0900" >Aug 16<i class="unloaded">2021-08-16T21:49:49+09:00</i> </span> </span> <span class="readtime" data-toggle="tooltip" data-placement="bottom" title="1294 words">7 min read</span></div></div><div class="post-content"><hr /><p>관계형 DBMS가 아닌 NoSQL DBMS인 mongoDB의 특징까지 하나하나 열거하며 스스로 배웠던 부분에 대한 복습을 하고 싶지만, 우선 시간 부족이라는 좋은 핑계를 내세우며 간단하게 <strong>맥 개발 환경 구축</strong>정도만 설명하고 오늘의 포스팅을 마무리 하겠다.</p><h2 id="맥-개발-환경-구축">맥 개발 환경 구축</h2><p>Pre-requisite:</p><ul><li>mac OS 10.11 버전 이상이어야함<li>homebrew를 통해 <code class="language-plaintext highlighter-rouge">terminal</code>로 설치할 것이기에 <code class="language-plaintext highlighter-rouge">brew</code> 가 깔려 있어야한다.</ul><div lang="bash" class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre><span class="nv">$ </span>brew <span class="nb">install </span>node
+<span class="nv">$ </span>brew <span class="nb">install </span>mongodb-community@5.0  <span class="c"># community 에디션 5.0 버전을 설치하라는 소리 (글을 쓴 시점의 최신 버전)</span>
+</pre></table></code></div></div><p>이렇게 커맨드를 치고 엔터를 <strong>빵!</strong> 치면 아래와 같은 결과를 볼 수 있을것이다.</p><div lang="bash" class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+</pre><td class="rouge-code"><pre><span class="o">(</span>base<span class="o">)</span> Bans-MacBook-Pro:~ bangirimben<span class="nv">$ </span>brew <span class="nb">install </span>mongodb-community@5.0
+<span class="o">==&gt;</span> Installing mongodb-community from mongodb/brew
+<span class="o">==&gt;</span> Downloading https://fastdl.mongodb.org/tools/db/mongodb-database-tools-macos-x86_64-100.
+<span class="c">######################################################################## 100.0%</span>
+<span class="o">==&gt;</span> Downloading https://ghcr.io/v2/homebrew/core/macos-term-size/manifests/1.0.0
+<span class="c">######################################################################## 100.0%</span>
+<span class="o">==&gt;</span> Downloading https://ghcr.io/v2/homebrew/core/macos-term-size/blobs/sha256:a19d9785c6b4d8
+<span class="o">==&gt;</span> Downloading from https://pkg-containers.githubusercontent.com/ghcr1/blobs/sha256:a19d978
+<span class="c">######################################################################## 100.0%</span>
+<span class="o">==&gt;</span> Downloading https://ghcr.io/v2/homebrew/core/node/14/manifests/14.17.5
+<span class="c">######################################################################## 100.0%</span>
+<span class="o">==&gt;</span> Downloading https://ghcr.io/v2/homebrew/core/node/14/blobs/sha256:d5a953dc4cb682a7e5c9a0
+<span class="o">==&gt;</span> Downloading from https://pkg-containers.githubusercontent.com/ghcr1/blobs/sha256:d5a953d
+<span class="c">######################################################################## 100.0%</span>
+<span class="o">==&gt;</span> Downloading https://ghcr.io/v2/homebrew/core/mongosh/manifests/1.0.5
+<span class="c">######################################################################## 100.0%</span>
+<span class="o">==&gt;</span> Downloading https://ghcr.io/v2/homebrew/core/mongosh/blobs/sha256:36c31f20e685f007af3812
+<span class="o">==&gt;</span> Downloading from https://pkg-containers.githubusercontent.com/ghcr1/blobs/sha256:36c31f2
+<span class="c">######################################################################## 100.0%</span>
+<span class="o">==&gt;</span> Downloading https://fastdl.mongodb.org/osx/mongodb-macos-x86_64-5.0.2.tgz
+<span class="c">######################################################################## 100.0%</span>
+<span class="o">==&gt;</span> Installing dependencies <span class="k">for </span>mongodb/brew/mongodb-community: mongodb-database-tools, macos-term-size, node@14 and mongosh
+<span class="o">==&gt;</span> Installing mongodb/brew/mongodb-community dependency: mongodb-database-tools
+🍺  /usr/local/Cellar/mongodb-database-tools/100.5.0: 13 files, 115.6MB, built <span class="k">in </span>6 seconds
+<span class="o">==&gt;</span> Installing mongodb/brew/mongodb-community dependency: macos-term-size
+<span class="o">==&gt;</span> Pouring macos-term-size--1.0.0.big_sur.bottle.tar.gz
+🍺  /usr/local/Cellar/macos-term-size/1.0.0: 5 files, 52.6KB
+<span class="o">==&gt;</span> Installing mongodb/brew/mongodb-community dependency: node@14
+<span class="o">==&gt;</span> Pouring node@14--14.17.5.big_sur.bottle.tar.gz
+🍺  /usr/local/Cellar/node@14/14.17.5: 4,377 files, 62MB
+<span class="o">==&gt;</span> Installing mongodb/brew/mongodb-community dependency: mongosh
+<span class="o">==&gt;</span> Pouring mongosh--1.0.5.big_sur.bottle.tar.gz
+🍺  /usr/local/Cellar/mongosh/1.0.5: 5,217 files, 30.3MB
+<span class="o">==&gt;</span> Installing mongodb/brew/mongodb-community
+<span class="o">==&gt;</span> Caveats
+To have launchd start mongodb/brew/mongodb-community now and restart at login:
+  brew services start mongodb/brew/mongodb-community
+Or, <span class="k">if </span>you don<span class="s1">'t want/need a background service you can just run:
+  mongod --config /usr/local/etc/mongod.conf
+==&gt; Summary
+🍺  /usr/local/Cellar/mongodb-community/5.0.2: 11 files, 180MB, built in 7 seconds
+==&gt; Caveats
+==&gt; mongodb-community
+To have launchd start mongodb/brew/mongodb-community now and restart at login:
+  brew services start mongodb/brew/mongodb-community
+Or, if you don'</span>t want/need a background service you can just run:
+  mongod <span class="nt">--config</span> /usr/local/etc/mongod.conf
+</pre></table></code></div></div><p>설치가 완료되었다면 <code class="language-plaintext highlighter-rouge">$ mongo -version</code> 을 입력하여 설치 완료 및 버전 확인을 해주자.</p><div lang="bash" class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre><td class="rouge-code"><pre><span class="nv">$ </span>mongo <span class="nt">-version</span> 
+
+MongoDB shell version v5.0.2
+Build Info: <span class="o">{</span>
+    <span class="s2">"version"</span>: <span class="s2">"5.0.2"</span>,
+    <span class="s2">"gitVersion"</span>: <span class="s2">"6d9ec525e78465dcecadcff99cce953d380fedc8"</span>,
+    <span class="s2">"modules"</span>: <span class="o">[]</span>,
+    <span class="s2">"allocator"</span>: <span class="s2">"system"</span>,
+    <span class="s2">"environment"</span>: <span class="o">{</span>
+        <span class="s2">"distarch"</span>: <span class="s2">"x86_64"</span>,
+        <span class="s2">"target_arch"</span>: <span class="s2">"x86_64"</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></table></code></div></div><hr /><h2 id="mongodb-실행">MongoDB 실행</h2><p>개발 환경을 구축했으니 MongoDB의 셸로 접속해야 앞으로 데이터를 조작하는 방법에 대해 배울 수 있다.</p><p>셸에 접속하기 위해서는 우선 ‘mongod 인스턴스’가 실행되어야 한다.</p><p>지금 단계에서는 간단하게 <code class="language-plaintext highlighter-rouge">mongod</code>를 켜면 데이터베이스에 접속할 수 있다는 정도로 이해하고 넘어가자.</p><div lang="bash" class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre><span class="nv">$ </span>mongod
+</pre></table></code></div></div><p>처음 MongoDB를 설치하면 문제가 발생했다면서 다음과 같은 문제에 직면할 수 있다.</p><div lang="bash" class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>exception <span class="k">in </span>initAndListen: NonExistentPath: Data directory not found
+</pre></table></code></div></div><p>MongoDB는 데이터를 기본적으로 <code class="language-plaintext highlighter-rouge">/data/db</code> 디렉토리에 저장하는데, 그 디렉토리가 생성되어 있지 않아서 나오는 에러 메시지다.</p><p>에러메시지에 나온 경로에 가서 디렉토리를 생성해주고 다시 한 번 실행을 해보자.</p><p>이제 <code class="language-plaintext highlighter-rouge">mongod</code> 명령어를 입력한 뒤 터미널 창을 하나 더 켜서 다음의 명령어를 입력하면 몽고 셸에 접속하게 된다.</p><div lang="bash" class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre><span class="nv">$ </span>mongo
+</pre></table></code></div></div><p>필자는 처음에 <code class="language-plaintext highlighter-rouge">$ mongo</code> 를 입력했을 때 <code class="language-plaintext highlighter-rouge">connection failed</code> 에 직면하였는데,</p><div lang="bash" class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre><td class="rouge-code"><pre>MongoDB shell version v5.0.2
+connecting to: mongodb://127.0.0.1:27017/?compressors<span class="o">=</span>disabled&amp;gssapiServiceName<span class="o">=</span>mongodb
+Error: couldn<span class="s1">'t connect to server 127.0.0.1:27017, connection attempt failed: SocketException: Error connecting to 127.0.0.1:27017 :: caused by :: Connection refused :
+connect@src/mongo/shell/mongo.js:372:17
+@(connect):2:6
+exception: connect failed
+exiting with code 1
+
+</span></pre></table></code></div></div><p>음.. 간단하게 구글링해보니깐 macbook 사용자들 중에서 MongoDB 버전 업 즉 v4 –&gt; v5 로 올렸을 때 생기는 흔하게 경험하는 에러라고 알려져있다.</p><p>혹자는 지우고, 경로 재설정에 어마무시한(?) 작업들이 필요했다고 하는데.. 필자 또한 체념하고 지우고 다시 깔고 경로 재설정까지 고려하고 있었으나 귀신같이 <code class="language-plaintext highlighter-rouge">brew</code> 를 통해 실행시킬수 있었다.</p><div lang="bash" class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+</pre><td class="rouge-code"><pre><span class="o">(</span>base<span class="o">)</span> Bans-MacBook-Pro:db bangirimben<span class="nv">$ </span>brew services start mongodb-community@5.0
+
+<span class="o">==&gt;</span> Successfully started <span class="sb">`</span>mongodb-community<span class="sb">`</span> <span class="o">(</span>label: homebrew.mxcl.mongodb-com
+
+<span class="o">(</span>base<span class="o">)</span> Bans-MacBook-Pro:db bangirimben<span class="nv">$ </span>mongo
+MongoDB shell version v5.0.2
+connecting to: mongodb://127.0.0.1:27017/?compressors<span class="o">=</span>disabled&amp;gssapiServiceName<span class="o">=</span>mongodb
+Implicit session: session <span class="o">{</span> <span class="s2">"id"</span> : UUID<span class="o">(</span><span class="s2">"-----"</span><span class="o">)</span> <span class="o">}</span>
+MongoDB server version: 5.0.2
+<span class="o">================</span>
+Warning: the <span class="s2">"mongo"</span> shell has been superseded by <span class="s2">"mongosh"</span>,
+which delivers improved usability and compatibility.The <span class="s2">"mongo"</span> shell has been deprecated and will be removed <span class="k">in
+</span>an upcoming release.
+We recommend you begin using <span class="s2">"mongosh"</span><span class="nb">.</span>
+For installation instructions, see
+https://docs.mongodb.com/mongodb-shell/install/
+<span class="o">================</span>
+Welcome to the MongoDB shell.
+For interactive <span class="nb">help</span>, <span class="nb">type</span> <span class="s2">"help"</span><span class="nb">.</span>
+For more comprehensive documentation, see
+	https://docs.mongodb.com/
+Questions? Try the MongoDB Developer Community Forums
+	https://community.mongodb.com
+<span class="nt">---</span>
+The server generated these startup warnings when booting: 
+        2021-08-14T22:55:38.707+09:00: Access control is not enabled <span class="k">for </span>the database. Read and write access to data and configuration is unrestricted
+<span class="nt">---</span>
+<span class="nt">---</span>
+        Enable MongoDB<span class="s1">'s free cloud-based monitoring service, which will then receive and display
+        metrics about your deployment (disk utilization, CPU, operation statistics, etc).
+
+        The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+        and anyone you share the URL with. MongoDB may use this information to make product
+        improvements and to suggest MongoDB products and deployment options to you.
+
+        To enable free monitoring, run the following command: db.enableFreeMonitoring()
+        To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
+---
+&gt; 
+
+</span></pre></table></code></div></div><p>다음장부터는 이렇게 mongo shell에 접속한 상태에서 진행해보자.</p><p><img data-proofer-ignore data-src="/../assets/images/MongoDB/mongoDB_StartSever.png" alt="mongoDB_StartSever" /></p></div><div class="post-tail-wrapper text-muted"><div class="post-meta mb-3"> <i class="far fa-folder-open fa-fw mr-1"></i> <a href='/categories/dbms/'>DBMS</a>, <a href='/categories/mongodb/'>MongoDB</a></div><div class="post-tags"> <i class="fa fa-tags fa-fw mr-1"></i> <a href="/tags/dbms/" class="post-tag no-text-decoration" >DBMS</a> <a href="/tags/sql/" class="post-tag no-text-decoration" >SQL</a> <a href="/tags/mongodb/" class="post-tag no-text-decoration" >MongoDB</a></div><div class="post-tail-bottom d-flex justify-content-between align-items-center mt-3 pt-5 pb-2"><div class="license-wrapper"> This post is licensed under <a href="https://creativecommons.org/licenses/by/4.0/"> CC BY 4.0 </a> by the author.</div><div class="share-wrapper"> <span class="share-label text-muted mr-1">Share</span> <span class="share-icons"> <a href="https://twitter.com/intent/tweet?text=MongoDB MAC OS 설치부터 실행까지 - Big Ben's Log&url=https://rphabet.github.io//posts/1_MongDB_Installation_for_Mac/" data-toggle="tooltip" data-placement="top" title="Twitter" target="_blank" rel="noopener" aria-label="Twitter"> <i class="fa-fw fab fa-twitter"></i> </a> <a href="https://www.facebook.com/sharer/sharer.php?title=MongoDB MAC OS 설치부터 실행까지 - Big Ben's Log&u=https://rphabet.github.io//posts/1_MongDB_Installation_for_Mac/" data-toggle="tooltip" data-placement="top" title="Facebook" target="_blank" rel="noopener" aria-label="Facebook"> <i class="fa-fw fab fa-facebook-square"></i> </a> <a href="https://telegram.me/share?text=MongoDB MAC OS 설치부터 실행까지 - Big Ben's Log&url=https://rphabet.github.io//posts/1_MongDB_Installation_for_Mac/" data-toggle="tooltip" data-placement="top" title="Telegram" target="_blank" rel="noopener" aria-label="Telegram"> <i class="fa-fw fab fa-telegram"></i> </a> <i class="fa-fw fas fa-link small" onclick="copyLink('', 'Link copied successfully!')" data-toggle="tooltip" data-placement="top" title="Copy link"> </i> </span></div></div></div></div></div><div id="panel-wrapper" class="col-xl-3 pl-2 text-muted topbar-down"><div class="access"><div id="access-lastmod" class="post"> <span>Recent Update</span><ul class="post-content pl-0 pb-1 ml-1 mt-2"><li><a href="/posts/multinomial/">머신러닝 다중분류 로지스틱 작동 원리 Multinomial Classification</a><li><a href="/posts/2021-09-08-Logistic_cancer_example_tf/">python으로 하는 머신러닝 로지스틱 회귀분석 예제 (tensorflow version)</a><li><a href="/posts/Logistic_cancer_example/">python으로 하는 머신러닝 로지스틱 회귀분석 예제 (scikit learn version)</a><li><a href="/posts/TensorFlow_Fundamentals/">TensorFlow 기초</a><li><a href="/posts/TensorFlow_multiple_regression/">TensorFlow를 이용한 다중선형회귀분석</a></ul></div><div id="access-tags"> <span>Trending Tags</span><div class="d-flex flex-wrap mt-3 mb-1 mr-3"> <a class="post-tag" href="/tags/python/">python</a> <a class="post-tag" href="/tags/ml/">ML</a> <a class="post-tag" href="/tags/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/">머신러닝</a> <a class="post-tag" href="/tags/numpy/">numpy</a> <a class="post-tag" href="/tags/pandas/">pandas</a> <a class="post-tag" href="/tags/regression/">regression</a> <a class="post-tag" href="/tags/%ED%9A%8C%EA%B7%80%EB%B6%84%EC%84%9D/">회귀분석</a> <a class="post-tag" href="/tags/tensorflow/">tensorflow</a> <a class="post-tag" href="/tags/%ED%85%90%EC%84%9C%ED%94%8C%EB%A1%9C%EC%9A%B0/">텐서플로우</a> <a class="post-tag" href="/tags/logistic/">logistic</a></div></div></div><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@1.0.1/dist/bootstrap-toc.min.js"></script><div id="toc-wrapper" class="pl-0 pr-4 mb-5"> <span class="pl-3 pt-2 mb-2">Contents</span><nav id="toc" data-toggle="toc"></nav></div></div></div><div class="row"><div class="col-12 col-lg-11 col-xl-8"><div id="post-extend-wrapper" class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4"><div id="related-posts" class="mt-5 mb-2 mb-sm-4"><h3 class="pt-2 mt-1 mb-4 ml-1" data-toc-skip>Further Reading</h3><div class="card-deck mb-4"><div class="card"> <a href="/posts/MongoDB_shell_exploration/"><div class="card-body"> <span class="timeago small" >Aug 16<i class="unloaded">2021-08-16T21:50:00+09:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>MongoDB shell 탐험하기</h3><div class="text-muted small"><p> 본격적으로 MongoDB 를 통해 데이터베이스를 만들고, 도큐먼트에 값을 채워넣기전에 MongDB 구조에 대해 알아야할 필요가 있다. 사실 필자는 컴퓨터 사이언스의 “Learning-by-doing”, 즉 직접 코딩을 하면서 지식을 쌓아가는 과정을 굉장히 좋아한다. 그렇지만 기본적인 근간이 되는 이론에 대해서는 엄격하게 먼저 훑고 지나가는 편이다. ...</p></div></div></a></div><div class="card"> <a href="/posts/multinomial/"><div class="card-body"> <span class="timeago small" >Sep 16<i class="unloaded">2021-09-16T17:43:00+09:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>머신러닝 다중분류 로지스틱 작동 원리 Multinomial Classification</h3><div class="text-muted small"><p> Multinomial Classification 기본적인 작동 원리 익숙했던 “맞다/아니다”와 같은 이진분류 회귀 기법의 연장선인 다중 분류에 대해 다뤄보려고 한다. 가장 큰 차이점은 “맞다/아니다”가 아닌, [일번, 이번, 삼번] 등과 같이 선택지가 세개 이상인 것으로 바뀐점이다. 이렇게만 보면 “음 그렇구나” 싶을 수 있겠지만, 내용적인...</p></div></div></a></div><div class="card"> <a href="/posts/kaggle_titanic/"><div class="card-body"> <span class="timeago small" >Sep 9<i class="unloaded">2021-09-09T18:03:00+09:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>Kaggle Machine Learning Titanic</h3><div class="text-muted small"><p> Titanic Machine Learning from Disater 처음 머신러닝을 시작하고, Kaggle에서 데이터를 뒤적뒤적, competition을 기웃거리다보면 빈번하게 접하는 데이터가 바로 이 titanic.csv이지 않나 생각한다. 실제 타이타닉에 승선한 탑승객들에 대한 데이터이며, 각종 정보(features)를 갖고 탑승객이 사망하...</p></div></div></a></div></div></div><div class="post-navigation d-flex justify-content-between"> <a href="/posts/Comment-Testing/" class="btn btn-outline-primary" prompt="Older"><p>Posting for Comment Test</p></a> <a href="/posts/HowToDealWithGit403Error/" class="btn btn-outline-primary" prompt="Newer"><p>git error 403 해결 방법</p></a></div><div id="disqus" class="pt-2 pb-2"><p class="text-center text-muted small pb-5"> Comments powered by <a href="https://disqus.com/">Disqus</a>.</p></div><script src="/assets/js/lib/jquery.disqusloader.min.js"></script> <script> const options = { scriptUrl: '//rphabet-github-io.disqus.com/embed.js', disqusConfig: function() { this.page.title = 'MongoDB MAC OS 설치부터 실행까지'; this.page.url = 'https://rphabet.github.io//posts/1_MongDB_Installation_for_Mac/'; this.page.identifier = '/posts/1_MongDB_Installation_for_Mac/'; } }; $.disqusLoader('#disqus', options); </script></div></div></div><footer class="d-flex w-100 justify-content-center"><div class="d-flex justify-content-between align-items-center"><div class="footer-left"><p class="mb-0"> © 2021 <a href="https://twitter.com/username">Girim Ban</a>. <span data-toggle="tooltip" data-placement="top" title="Except where otherwise noted, the blog posts on this site are licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) License by the author.">Some rights reserved.</span></p></div><div class="footer-right"><p class="mb-0"> Powered by <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a> with <a href="https://github.com/cotes2020/jekyll-theme-chirpy" target="_blank" rel="noopener">Chirpy</a> theme.</p></div></div></footer></div><div id="search-result-wrapper" class="d-flex justify-content-center unloaded"><div class="col-12 col-sm-11 post-content"><div id="search-hints"><h4 class="text-muted mb-4">Trending Tags</h4><a class="post-tag" href="/tags/python/">python</a> <a class="post-tag" href="/tags/ml/">ML</a> <a class="post-tag" href="/tags/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/">머신러닝</a> <a class="post-tag" href="/tags/numpy/">numpy</a> <a class="post-tag" href="/tags/pandas/">pandas</a> <a class="post-tag" href="/tags/regression/">regression</a> <a class="post-tag" href="/tags/%ED%9A%8C%EA%B7%80%EB%B6%84%EC%84%9D/">회귀분석</a> <a class="post-tag" href="/tags/tensorflow/">tensorflow</a> <a class="post-tag" href="/tags/%ED%85%90%EC%84%9C%ED%94%8C%EB%A1%9C%EC%9A%B0/">텐서플로우</a> <a class="post-tag" href="/tags/logistic/">logistic</a></div><div id="search-results" class="d-flex flex-wrap justify-content-center text-muted mt-3"></div></div></div></div><div id="mask"></div><a id="back-to-top" href="#" aria-label="back-to-top" class="btn btn-lg btn-box-shadow" role="button"> <i class="fas fa-angle-up"></i> </a> <script src="https://cdn.jsdelivr.net/npm/simple-jekyll-search@1.7.3/dest/simple-jekyll-search.min.js"></script> <script> SimpleJekyllSearch({ searchInput: document.getElementById('search-input'), resultsContainer: document.getElementById('search-results'), json: '/assets/js/data/search.json', searchResultTemplate: '<div class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-lg-4 pr-lg-4 pl-xl-0 pr-xl-0"> <a href="https://rphabet.github.io/{url}">{title}</a><div class="post-meta d-flex flex-column flex-sm-row text-muted mt-1 mb-1"> {categories} {tags}</div><p>{snippet}</p></div>', noResultsText: '<p class="mt-5">Oops! No result founds.</p>', templateMiddleware: function(prop, value, template) { if (prop === 'categories') { if (value === '') { return `${value}`; } else { return `<div class="mr-sm-4"><i class="far fa-folder fa-fw"></i>${value}</div>`; } } if (prop === 'tags') { if (value === '') { return `${value}`; } else { return `<div><i class="fa fa-tag fa-fw"></i>${value}</div>`; } } } }); </script> <script src="https://cdn.jsdelivr.net/combine/npm/lozad/dist/lozad.min.js,npm/magnific-popup@1/dist/jquery.magnific-popup.min.js"></script> <script defer src="/assets/js/dist/post.min.js"></script> <script> /* see: <https://docs.mathjax.org/en/latest/options/input/tex.html#tex-options> */ MathJax = { tex: { inlineMath: [ /* start/end delimiter pairs for in-line math */ ['$','$'], ['\\(','\\)'] ], displayMath: [ /* start/end delimiter pairs for display math */ ['$$', '$$'], ['\\[', '\\]'] ] } }; </script> <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script> <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"> </script> <script src="https://cdn.jsdelivr.net/combine/npm/popper.js@1.16.1,npm/bootstrap@4/dist/js/bootstrap.min.js"></script> <script defer src="/app.js"></script> <script defer src="https://www.googletagmanager.com/gtag/js?id=G-8TH4RLJ51D"></script> <script> document.addEventListener("DOMContentLoaded", function(event) { window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-8TH4RLJ51D'); }); </script>
